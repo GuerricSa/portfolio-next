@@ -89,3 +89,42 @@ body {
 .fade-in-zoom {
   animation: fade-in-zoom 0.7s ease-out forwards;
 }
+
+.botToTopHover {
+  background-image: linear-gradient(
+    180deg,
+    var(--color-secondary) 0%,
+    var(--color-secondary) 49.9%,
+    var(--color-tertiary) 50%,
+    var(--color-tertiary) 100%
+  );
+  background-size: 100% 200%;
+  background-position: 0% 0%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 1s ease;
+
+  &:hover {
+    background-position: 0% 100%;
+  }
+}
+.botToTopHover--pt {
+  background-image: linear-gradient(
+    180deg,
+    var(--color-primary) 0%,
+    var(--color-primary) 49.9%,
+    var(--color-tertiary) 50%,
+    var(--color-tertiary) 100%
+  );
+  background-size: 100% 200%;
+  background-position: 0% 0%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: background-position 1s ease;
+
+  &:hover {
+    background-position: 0% 100%;
+  }
+}

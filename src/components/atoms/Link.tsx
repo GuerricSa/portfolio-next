@@ -1,4 +1,5 @@
 import React, { ReactNode } from 'react'
+import NextLink from 'next/link'
 
 interface LinkProps {
   children: ReactNode
@@ -24,24 +25,40 @@ const Link: React.FC<LinkProps> = ({
   const baseStyle = 'inline-flex items-center gap-2 transition-colors duration-200';
 
   const variantStyles = {
-    primary: 'text-primary hover:text-secondary',
-    secondary: 'text-secondary hover:text-primary',
-    tertiary: 'text-tertiary hover:text-primary',
+    primary: 'text-primary',
+    secondary: 'text-secondary',
+    tertiary: 'text-tertiary',
   };
 
-  const customHoverStyle = hoverColor && isSvg ? `hover:[&>path]:fill-[${hoverColor}]` : !isSvg && hoverColor ? `hover:text-[${hoverColor}]` : '';
+  const customHoverStyle = hoverColor && isSvg
+    ? 'group'
+    : hoverColor
+    ? `hover:text-${hoverColor}`
+    : '';
+
+  const combinedClasses = `${baseStyle} ${variantStyles[variant]} ${customHoverStyle} ${className}`;
+
+  if (isExternal) {
+    return (
+      <a
+        href={href}
+        className={combinedClasses}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={ariaLabel}
+      >
+        {children}
+      </a>
+    );
+  }
 
   return (
-    <a
-      href={href}
-      className={`${baseStyle} ${variantStyles[variant]} ${customHoverStyle} ${className}`}
-      target={isExternal ? '_blank' : undefined}
-      rel={isExternal ? 'noopener noreferrer' : undefined}
-      aria-label={ariaLabel}
-    >
-      {children}
-    </a>
-  )
-}
+    <NextLink href={href} legacyBehavior>
+      <a className={combinedClasses} aria-label={ariaLabel}>
+        {children}
+      </a>
+    </NextLink>
+  );
+};
 
-export default Link
+export default Link;
