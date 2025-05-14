@@ -1,0 +1,9 @@
+:root {
+  --primary_color: #222222;
+  --secondary_color: #F7F2EE;
+  --tertiary_color: #E16C38;
+
+  --slow_transition : 0.5s ease-in-out;
+
+  --container_horizontal_padding: 2rem;
+}

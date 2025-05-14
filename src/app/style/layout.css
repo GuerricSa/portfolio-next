@@ -1,0 +1,18 @@
+section {
+  padding: 5rem 0;
+  opacity: 0;
+  transform: translateY(20px)
+}
+
+@media (min-width: 1024px) {
+  section {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
+
+.show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var(--slow_transition), transform var(--slow_transition);
+}

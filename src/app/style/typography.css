@@ -1,0 +1,33 @@
+body {
+  margin: 0;
+  background-color: #F7F2E8;
+  font-family: 'Work Sans', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+h1 {
+  font-family: 'Atkinson Hyperlegible';
+  font-weight: 700;
+  font-size: 4rem;
+  line-height: 1.2;
+}
+
+@media screen and (max-width: 1024px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size: 3rem;
+  }
+}

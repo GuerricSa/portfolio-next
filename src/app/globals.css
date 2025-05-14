@@ -1,4 +1,9 @@
 @import "tailwindcss";
+@import url('../app/style/fonts.css');
+@import url('../app/style/layout.css');
+@import url('../app/style/typography.css');
+@import url('../app/style/variables.css');
+@import url('../app/style/organisms/offers.css');
 
 :root {
   --background: #ffffff;
@@ -11,15 +16,10 @@
   --color-dark: #000000;
 
   --container-horizontal-padding: 2rem;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @theme inline {
-  --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
   --color-primary: var(--color-primary);
   --color-secondary: var(--color-secondary);
   --color-tertiary: var(--color-tertiary);
@@ -33,9 +33,8 @@
 }
 
 body {
-  background-color: var(--background);
+  background-color: var(----color-secondary);
   color: var(--foreground);
-  font-family: var(--font-sans), sans-serif;
 }
 
 .container {
@@ -126,5 +125,54 @@ body {
 
   &:hover {
     background-position: 0% 100%;
+  }
+}
+@media (min-width: 1024px) {
+  .botToTopHover--desktop {
+    background-image: linear-gradient(
+      180deg,
+      var(--color-secondary) 0%,
+      var(--color-secondary) 49.9%,
+      var(--color-tertiary) 50%,
+      var(--color-tertiary) 100%
+    );
+    background-size: 100% 200%;
+    background-position: 0% 0%;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: background-position 1s ease;
+
+    &:hover {
+      background-position: 0% 100%;
+    }
+  }
+}
+
+.btn-calendly button {
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+}
+
+.logo--hover-effect.animate span {
+  animation: wave 1s ease-in-out forwards;
+}
+
+.logo--hover-effect.animate span:nth-child(1) {
+  animation-delay: 0s;
+}
+.logo--hover-effect.animate span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.logo--hover-effect.animate span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes wave {
+  0%, 100% {
+      transform: translateY(0);
+  }
+  50% {
+      transform: translateY(-10px);
   }
 }
