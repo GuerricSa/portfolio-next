@@ -28,7 +28,7 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
   }, []);
 
   return (
-    <header className="mx-auto max-w-[1400px] mt-2.5 px-4 z-10 relative">
+    <header className="mx-auto max-w-[1400px] pt-2.5 px-4 z-10 relative">
       {/* Skip to Main Content Link */}
       <a
         href="#main-content"

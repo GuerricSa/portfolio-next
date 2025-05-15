@@ -22,7 +22,7 @@ const Link: React.FC<LinkProps> = ({
   ariaLabel,
   className = '',
 }) => {
-  const baseStyle = 'inline-flex items-center gap-2 transition-colors duration-200';
+  const baseStyle = 'inline-flex items-center gap-2 transition-colors duration-200 cursor-pointer';
 
   const variantStyles = {
     primary: 'text-primary',

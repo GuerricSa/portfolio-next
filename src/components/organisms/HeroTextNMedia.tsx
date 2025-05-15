@@ -57,7 +57,7 @@ const HeroTextNMedia: React.FC = () => {
         alt="Portrait de Guerric SANT"
         width={400}
         height={540}
-        className="w-[25rem]"
+        className="w-[25rem] max-w-full"
         rotation={rotation}
         priority
       />

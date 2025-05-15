@@ -3,6 +3,7 @@
 @import url('../app/style/layout.css');
 @import url('../app/style/typography.css');
 @import url('../app/style/variables.css');
+@import url('../app/style/organisms/skills.css');
 @import url('../app/style/organisms/offers.css');
 
 :root {
@@ -33,7 +34,7 @@
 }
 
 body {
-  background-color: var(----color-secondary);
+  background-color: var(--color-secondary);
   color: var(--foreground);
 }
 

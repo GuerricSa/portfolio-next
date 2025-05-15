@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Text from '../atoms/Text';
 import SkillCircle from '../molecules/SkillCircle';
 import SkillDescription from '../molecules/SkillDescription';
@@ -25,6 +25,7 @@ const Skills: React.FC = () => {
   const [activeDescription, setActiveDescription] = useState('frontendLogos');
   const [containerHeight, setContainerHeight] = useState(0);
   const [isDesktop, setIsDesktop] = useState(false);
+  const descriptionRefs = useRef<Record<string, HTMLDivElement | null>>({});
 
   // Organisation des logos par catégorie
   const frontendLogos = [
@@ -78,17 +79,18 @@ const Skills: React.FC = () => {
   };
 
   useEffect(() => {
-    console.log(isDesktop)
     const updateHeight = () => {
-      const descriptionNodes = document.querySelectorAll('.skills__description');
-      if (!descriptionNodes.length) return;
+      const nodes = Object.values(descriptionRefs.current);
+      if (!nodes.length) return;
 
       let maxHeight = 0;
 
-      descriptionNodes.forEach((node) => {
-        const height = node.getBoundingClientRect().height;
-        if (height > maxHeight) {
-          maxHeight = height;
+      nodes.forEach((node) => {
+        if (node) {
+          const height = node.getBoundingClientRect().height;
+          if (height > maxHeight) {
+            maxHeight = height;
+          }
         }
       });
 
@@ -113,7 +115,7 @@ const Skills: React.FC = () => {
     return () => {
       window.removeEventListener('resize', handleWindowResize);
     };
-  }, []);
+  }, [isDesktop]);
 
   return (
     <section className="bg-primary py-12" aria-labelledby="skills-title">
@@ -167,6 +169,7 @@ const Skills: React.FC = () => {
                 content={desc.content}
                 isActive={activeDescription === key}
                 minHeight={containerHeight}
+                ref={(el) => { descriptionRefs.current[key] = el }}
               />
             ))}
           </div>
