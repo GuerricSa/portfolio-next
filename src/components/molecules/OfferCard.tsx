@@ -20,7 +20,7 @@ const OfferCard: React.FC<OfferCardProps> = ({
 }) => {
   return (
     <div
-      className={`cursor-pointer card bg-primary rounded-md p-8 left-1/2 top-1/2 transition-all duration-500 ease-in-out w-6/12 max-w-96 absolute active:scale-95 ${className}`}
+      className={`cursor-pointer card bg-primary rounded-md p-8 left-1/2 top-1/2 transition-all duration-500 ease-in-out active:scale-95 ${className}`}
       style={style}
       onClick={onClick}
     >

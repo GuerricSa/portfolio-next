@@ -5,6 +5,7 @@
 @import url('../app/style/variables.css');
 @import url('../app/style/organisms/skills.css');
 @import url('../app/style/organisms/offers.css');
+@import url('../app/style/organisms/works.css');
 
 :root {
   --background: #ffffff;

@@ -3,6 +3,7 @@ import ContactBanner from "@/components/organisms/ContactBanner";
 import HeroTextNMedia from "@/components/organisms/HeroTextNMedia";
 import Offers from "@/components/organisms/Offers";
 import Skills from "@/components/organisms/Skills";
+import Works from "@/components/organisms/Works";
 import { ContactModalProvider } from '@/context/ContactModalContext';
 
 
@@ -13,7 +14,8 @@ export default function Home() {
         <ClientNavbar />
         <HeroTextNMedia />
         <Skills />
-        {/* <Offers /> */}
+        <Offers />
+        <Works />
         <ContactBanner />
       </ContactModalProvider>
     </>

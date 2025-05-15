@@ -262,6 +262,7 @@ const Offers: React.FC = () => {
               title={card.title}
               description={card.description}
               onClick={() => setSelectedCard(card)}
+              className='w-full'
             />
           ))}
         </div>
@@ -276,7 +277,7 @@ const Offers: React.FC = () => {
                 description={card.description}
                 onClick={() => handleCardClick(index)}
                 style={getCardPosition(index)}
-                className="absolute left-1/2 top-1/2 active:scale-95"
+                className="absolute w-6/12 max-w-96 left-1/2 top-1/2 active:scale-95"
               />
             ))}
           </div>

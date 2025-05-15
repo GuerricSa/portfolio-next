@@ -67,7 +67,7 @@ const OfferModal: React.FC<OfferModalProps> = ({
         aria-describedby={`modal-description-${card.id}`}
       >
         <button
-          className="absolute top-2 right-2 text-black cursor-pointer"
+          className="absolute top-2 right-2 text-black cursor-pointer w-6 h-6 flex items-center justify-center"
           onClick={onClose}
         >
           ✕
@@ -94,7 +94,7 @@ const OfferModal: React.FC<OfferModalProps> = ({
         <Text variant="h3" className="mt-6 font-bold text-tertiary">
           {card.price}
         </Text>
-        <div className="flex justify-between mt-6">
+        <div className="flex justify-center md:justify-between mt-6 flex-wrap gap-4 items-center">
           <Button
             onClick={() => {
               onClose();
@@ -102,11 +102,11 @@ const OfferModal: React.FC<OfferModalProps> = ({
             }}
             label="Contacter Guerric"
             variant="tertiary"
-            className="bg-secondary border-tertiary border-2 text-tertiary hover:bg-tertiary hover:text-primary"
+            className="bg-secondary whitespace-nowrap border-tertiary border-2 text-tertiary hover:bg-tertiary hover:text-primary"
           />
           <Link
             href={card.link}
-            className="bg-primary text-tertiary font-semibold px-6 py-3 rounded-lg shadow hover:bg-tertiary hover:text-secondary transition"
+            className="bg-primary whitespace-nowrap text-tertiary font-semibold px-6 py-3 rounded-lg shadow hover:bg-tertiary hover:text-secondary transition"
           >
             Approfondir cette offre
           </Link>

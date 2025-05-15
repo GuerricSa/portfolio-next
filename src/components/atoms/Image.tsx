@@ -7,8 +7,8 @@ import { StaticImageData } from 'next/image';
 interface ImageProps {
   src: string | StaticImageData;
   alt: string;
-  width: number;
-  height: number;
+  width: number | "auto";
+  height: number | "auto";
   className?: string;
   rotation?: number;
   priority?: boolean;
