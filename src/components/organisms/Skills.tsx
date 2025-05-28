@@ -83,6 +83,12 @@ const Skills: React.FC = () => {
       const nodes = Object.values(descriptionRefs.current);
       if (!nodes.length) return;
 
+      nodes.forEach((node) => {
+        if (node) {
+          node.style.minHeight = 'auto';
+        }
+      });
+
       let maxHeight = 0;
 
       nodes.forEach((node) => {
@@ -158,7 +164,8 @@ const Skills: React.FC = () => {
           </div>
           <div
             className="w-full md:w-1/2 h-full relative"
-            style={{ minHeight: containerHeight }}
+            id='descriptionContainer'
+            style={{ minHeight: containerHeight ? containerHeight : 'auto' }}
             role="region"
             aria-label="Description des compétences"
           >

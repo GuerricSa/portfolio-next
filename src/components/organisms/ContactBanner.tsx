@@ -4,7 +4,7 @@ import React from 'react';
 import ContactButton from '../atoms/ContactButton';
 import CalendlyButton from '../atoms/CalendlyButton';
 import Text from '../atoms/Text';
-import { useContactModal } from '@/context/ContactModalContext';
+import { useContactModal } from '../../context/ContactModalContext';
 
 const ContactBanner: React.FC = () => {
   const { openModal } = useContactModal();
@@ -35,7 +35,7 @@ const ContactBanner: React.FC = () => {
           >
             Me contacter
           </ContactButton>
-          <CalendlyButton url="https://calendly.com/guerric-sant" />
+          <CalendlyButton url="https://calendly.com/guerric-sant" variant="secondary" />
         </div>
       </div>
     </section>

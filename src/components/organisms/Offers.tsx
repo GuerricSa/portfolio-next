@@ -6,7 +6,7 @@ import OfferCard from '../molecules/OfferCard';
 import OfferModal from '../molecules/OfferModal';
 import NavigationButton from '../atoms/NavigationButton';
 import Link from 'next/link';
-import { useContactModal } from '@/context/ContactModalContext';
+import { useContactModal } from '../../context/ContactModalContext';
 
 const animationDuration = 500;
 

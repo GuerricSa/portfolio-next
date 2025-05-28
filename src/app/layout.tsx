@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import ScrollObserver from "@/components/organisms/ScrollObserver";
 
 export const metadata: Metadata = {
   title: "Création de site internet – Guerric SANT, développeur web freelance",
@@ -17,7 +16,6 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        <ScrollObserver />
         {children}
       </body>
     </html>

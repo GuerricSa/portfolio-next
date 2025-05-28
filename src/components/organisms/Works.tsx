@@ -136,7 +136,7 @@ const Works: React.FC = () => {
         const nextSlide = activeSlide >= works.length - 1 ? 0 : activeSlide + 1;
         const targetSlide = sliderRef.current?.children[nextSlide] as HTMLElement;
 
-        if (targetSlide) {
+        if (targetSlide && sliderRef.current) {
           const cardWidth = targetSlide.offsetWidth;
           const gap = 32; // 2rem = 32px
           const scrollAmount = cardWidth + gap;

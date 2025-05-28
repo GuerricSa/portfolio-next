@@ -1,0 +1,54 @@
+.how-it-works-panel:not(.how-it-works__active-step) .how-it-works__text {
+  animation: howItWorksTextLeave 1s linear forwards;
+}
+.how-it-works__active-step .how-it-works__text {
+  animation: howItWorksText 1s linear forwards;
+}
+.how-it-works__active-step .how-it-works__number {
+  animation: howItWorksNumber 1s linear forwards;
+}
+.how-it-works-panel:not(.how-it-works__active-step) .how-it-works__number {
+  animation: howItWorksNumberLeave 1s linear forwards;
+}
+
+@keyframes howItWorksNumber {
+  0% {
+    box-shadow: 0px 0px 0px 0px var(--tertiary_color);
+  }
+  100% {
+    box-shadow: 0px 0px 45px 1px var(--tertiary_color);
+  }
+}
+@keyframes howItWorksNumberLeave {
+  0% {
+    box-shadow: 0px 0px 45px 1px var(--tertiary_color);
+  }
+  100% {
+    box-shadow: 0px 0px 0px 0px var(--tertiary_color);
+  }
+}
+
+@keyframes howItWorksText {
+  0% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  90% {
+    opacity: 0.9;
+    transform: translateY(1px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+@keyframes howItWorksTextLeave {
+  0% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+}

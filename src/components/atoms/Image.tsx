@@ -7,8 +7,8 @@ import { StaticImageData } from 'next/image';
 interface ImageProps {
   src: string | StaticImageData;
   alt: string;
-  width: number | "auto";
-  height: number | "auto";
+  width: number;
+  height: number;
   className?: string;
   rotation?: number;
   priority?: boolean;
@@ -33,7 +33,7 @@ const Image: React.FC<ImageProps> = ({
         alt={alt}
         width={width}
         height={height}
-        className="rounded-md h-full w-full object-contain"
+        className="rounded-md object-contain max-h-full"
         priority={priority}
       />
     </div>

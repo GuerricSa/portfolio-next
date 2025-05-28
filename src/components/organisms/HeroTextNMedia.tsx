@@ -43,13 +43,16 @@ const HeroTextNMedia: React.FC = () => {
       id="main-content"
       className="container mx-auto transition-transform duration-300 ease-out flex flex-col items-center lg:flex-row gap-14 py-10 lg:py-28"
     >
-      <div className="flex items-center">
+      <div className="">
         <Text variant="h1" className="text-center lg:text-left lg:max-w-xl">
-          Hello,
+          Un site web,
           <br />
-          Bienvenue sur le Portfolio de
+          rapide, visible
           <br />
-          <span className="text-tertiary">Guerric SANT</span>
+          <span className="text-tertiary">pensé pour convertir</span>
+        </Text>
+        <Text variant="body" className='text-center mt-8 font-semibold lg:text-left lg:max-w-xl'>
+          Guerric SANT - Web strategist & Developer
         </Text>
       </div>
       <Image

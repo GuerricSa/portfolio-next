@@ -21,7 +21,7 @@ const SocialLink: React.FC<SocialLinkProps> = ({ href, icon, label, onClick, cla
       onClick={onClick}
       aria-label={label}
     >
-      <Icon name={icon} className="text-secondary" />
+      <Icon name={icon} className="text-primary lg:text-secondary" />
     </a>
   );
 };

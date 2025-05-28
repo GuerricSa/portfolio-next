@@ -1,7 +1,7 @@
 'use client'
 
 import React, { createContext, useContext, useState } from 'react';
-import ContactModal from '@/components/molecules/ContactModal';
+import ContactModal from '../components/molecules/ContactModal';
 
 interface ContactModalContextType {
   openModal: () => void;
