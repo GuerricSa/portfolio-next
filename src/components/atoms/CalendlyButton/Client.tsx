@@ -9,7 +9,7 @@ interface CalendlyButtonProps {
   className?: string;
 }
 
-const CalendlyButton: React.FC<CalendlyButtonProps> = ({ url,variant = 'baseStyle', className = '' }) => {
+const CalendlyButtonClient: React.FC<CalendlyButtonProps> = ({ url,variant = 'baseStyle', className = '' }) => {
   const [isClient, setIsClient] = useState(false);
   const baseStyle = 'cursor-pointer';
   const primaryStyle = 'lg:whitespace-nowrap btn-contact bg-primary text-tertiary font-semibold px-6 py-3 rounded-lg shadow hover:bg-secondary transition';
@@ -46,4 +46,4 @@ const CalendlyButton: React.FC<CalendlyButtonProps> = ({ url,variant = 'baseStyl
   );
 };
 
-export default CalendlyButton;
+export default CalendlyButtonClient;

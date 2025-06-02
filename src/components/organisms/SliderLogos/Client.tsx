@@ -1,16 +1,22 @@
 'use client'
 
 import React from 'react';
-import useGlide from '../molecules/UseGlide';
-import Image from '../atoms/Image';
-import Text from '../atoms/Text';
+import useGlide from '../../molecules/UseGlide';
+import Image from '../../atoms/Image';
+import Text from '../../atoms/Text';
 
-const LogoCarousel = ({ id, title, logos }: {
-  id?: string;
-  title?: string;
-  logos: { src: string; alt: string, width: number, height: number }[];
-}) => {
-  const shouldInitGlide = logos.length > 5;
+interface SliderLogosClientProps {
+  clients: Array<{
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  }>;
+  title: string;
+}
+
+const SliderLogosClient: React.FC<SliderLogosClientProps> = ({ clients, title }) =>  {
+  const shouldInitGlide = clients.length > 5;
 
   useGlide('.glide', {
     type: 'carousel',
@@ -30,7 +36,7 @@ const LogoCarousel = ({ id, title, logos }: {
   }, shouldInitGlide);
 
   return (
-    <section className="container" id={id}>
+    <section className="container">
       <div className='relative'>
         {title && (
           <div className="text-primary lg:max-w-xs lg:relative z-20 pb-8 lg:py-16 lg:px-10 lg:bg-primary lg:min-h-64 lg:flex lg:flex-col lg:justify-center lg:rounded-xl">
@@ -42,13 +48,13 @@ const LogoCarousel = ({ id, title, logos }: {
           <div className="glide relative lg:absolute flex h-full left-0 top-0 w-full py-16">
             <div className="slider-logos__glide-track absolute overflow-hidden my-auto" data-glide-el="track">
               <ul className="glide__slides relative w-full backface-hidden transform-3d touch-pan-y overflow-hidden mx-0 my-auto p-0 flex-nowrap whitespace-nowrap flex items-center will-change-transform">
-                {logos.map((logo, index) => (
+                {clients.map((logo, index) => (
                   <li key={index} className="cl__slide px-3 h-20 flex justify-center">
                     <Image
                       src={logo.src}
                       alt={logo.alt}
-                      width={250}
-                      height={250}
+                      width={logo.width}
+                      height={logo.height}
                       className="h-full flex items-center justify-center max-h-64"
                     />
                   </li>
@@ -61,4 +67,4 @@ const LogoCarousel = ({ id, title, logos }: {
   );
 };
 
-export default LogoCarousel;
+export default SliderLogosClient;

@@ -1,12 +1,17 @@
 'use client'
 
 import React from 'react';
-import ContactButton from '../atoms/ContactButton';
-import CalendlyButton from '../atoms/CalendlyButton';
-import Text from '../atoms/Text';
-import { useContactModal } from '../../context/ContactModalContext';
+import ContactButton from '../../atoms/ContactButton';
+import CalendlyButton from '../../atoms/CalendlyButton/Server';
+import Text from '../../atoms/Text';
+import { useContactModal } from '../../../context/ContactModalContext';
 
-const ContactBanner: React.FC = () => {
+interface ContactBannerClientProps {
+  title: string;
+  description: string;
+}
+
+const ContactBannerClient: React.FC<ContactBannerClientProps> = ({title, description}) => {
   const { openModal } = useContactModal();
 
   return (
@@ -18,10 +23,10 @@ const ContactBanner: React.FC = () => {
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
           <Text variant="h2" id="contact-title" className="mb-2">
-            Un projet, une question ?
+            {title}
           </Text>
           <Text variant="body" className="text-primary">
-            Discutons-en ensemble ! Je suis disponible pour échanger par mail ou lors d&apos;un rendez-vous.
+            {description}
           </Text>
         </div>
         <div
@@ -42,4 +47,4 @@ const ContactBanner: React.FC = () => {
   );
 };
 
-export default ContactBanner;
+export default ContactBannerClient;

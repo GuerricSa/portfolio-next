@@ -1,5 +1,8 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { ContactModalProvider } from '../context/ContactModalContext';
+import ClientNavbar from "../components/organisms/Navbar/Server";
+import Footer from "components/organisms/Footer/Server";
 
 export const metadata: Metadata = {
   title: "Création de site internet – Guerric SANT, développeur web freelance",
@@ -16,7 +19,11 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        {children}
+        <ContactModalProvider>
+          <ClientNavbar />
+          {children}
+          <Footer />
+        </ContactModalProvider>
       </body>
     </html>
   );

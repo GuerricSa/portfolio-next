@@ -1,7 +1,5 @@
-'use client';
-
 import React from 'react';
-import CalendlyButton from '../atoms/CalendlyButton';
+import CalendlyButton from '../atoms/CalendlyButton/Server';
 import Text from '../atoms/Text';
 
 interface HeroSimpleProps {

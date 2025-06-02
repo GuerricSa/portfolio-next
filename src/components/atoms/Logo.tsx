@@ -8,7 +8,7 @@ const Logo: React.FC = () => {
     <div className="text-2xl font-bold lg:w-80">
       <Link
         href="/"
-        className="text-secondary flex logo--hover-effect"
+        className="text-secondary flex logo--hover-effect w-fit p-2"
         onMouseEnter={(e) => {
           const link = e.currentTarget;
           console.log(link)

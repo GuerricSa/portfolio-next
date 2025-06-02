@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://guerric-sant.com
+
+# Sitemaps
+Sitemap: https://guerric-sant.com/sitemap.xml

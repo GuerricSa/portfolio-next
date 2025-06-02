@@ -1,11 +1,11 @@
 'use client'
 
 import React, { useEffect, useRef, useState } from 'react';
-import Text from '../atoms/Text';
-import Image from '../atoms/Image';
-import portraitImage from '../../../public/images/portrait_guerric.webp';
+import Text from '../../atoms/Text';
+import Image from '../../atoms/Image';
+import portraitImage from '../../../../public/images/portrait_guerric.webp';
 
-const HeroTextNMedia: React.FC = () => {
+const HeroTextNMediaClient: React.FC = () => {
   const sectionRef = useRef<HTMLElement>(null);
   const [rotation, setRotation] = useState(0);
 
@@ -68,4 +68,4 @@ const HeroTextNMedia: React.FC = () => {
   );
 };
 
-export default HeroTextNMedia;
+export default HeroTextNMediaClient;

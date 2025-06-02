@@ -108,8 +108,10 @@ body {
   -webkit-text-fill-color: transparent;
   transition: background-position 1s ease;
 
-  &:hover {
-    background-position: 0% 100%;
+  @media (hover: hover) {
+    &:hover {
+      background-position: 0% 100%;
+    }
   }
 }
 .botToTopHover--pt {
@@ -127,8 +129,10 @@ body {
   -webkit-text-fill-color: transparent;
   transition: background-position 1s ease;
 
-  &:hover {
-    background-position: 0% 100%;
+  @media (hover: hover) {
+    &:hover {
+      background-position: 0% 100%;
+    }
   }
 }
 @media (min-width: 1024px) {
@@ -147,8 +151,10 @@ body {
     -webkit-text-fill-color: transparent;
     transition: background-position 1s ease;
 
-    &:hover {
-      background-position: 0% 100%;
+    @media (hover: hover) {
+      &:hover {
+        background-position: 0% 100%;
+      }
     }
   }
 }

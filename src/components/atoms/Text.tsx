@@ -5,12 +5,14 @@ import React from "react";
 interface TextProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   variant?: 'h1' | 'h2' | 'h3' | 'body' | 'small';
+  unstyled?: boolean;
 }
 
 const Text: React.FC<TextProps> = ({
   children,
   variant = 'body',
   className = '',
+  unstyled = false,
   ...props
 }) => {
   const baseStyle = '';
@@ -19,8 +21,11 @@ const Text: React.FC<TextProps> = ({
   const h3Style = 'text-2xl md:text-3xl font-semibold text-primary';
   const bodyStyle = 'text-base text-primary';
   const smallStyle = 'text-sm text-primary';
+  const noStyle = ''
 
-  const textStyle = variant === 'h1'
+  const textStyle = unstyled
+    ? noStyle
+    : variant === 'h1'
     ? h1Style
     : variant === 'h2'
     ? h2Style

@@ -1,11 +1,10 @@
-'use client';
-
 import React from 'react';
-import Navbar from './Navbar';
+import Navbar from './Client';
 
 const navItems = [
   { label: 'Accueil', href: '/' },
   { label: 'À propos', href: '/about' },
+  { label: 'simulateur', href: '/estimate'}
 ];
 
 const NavigationClient: React.FC = () => {

@@ -1,6 +1,7 @@
 'use client'
 
-import React from 'react';
+import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import Text from '../atoms/Text';
 import Button from '../atoms/Button';
 import Link from 'next/link';
@@ -33,9 +34,16 @@ const OfferModal: React.FC<OfferModalProps> = ({
   paths,
   activePath,
 }) => {
-  if (!card) return null;
+  const [mounted, setMounted] = React.useState(false);
 
-  return (
+  useEffect(() => {
+    setMounted(true);
+    return () => setMounted(false);
+  }, []);
+
+  if (!card || !mounted) return null;
+
+  return createPortal(
     <div
       className="fixed inset-0 bg-black/60 flex items-center justify-center z-50 animate-fade-in-container"
       onClick={onClose}
@@ -112,7 +120,8 @@ const OfferModal: React.FC<OfferModalProps> = ({
           </Link>
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 

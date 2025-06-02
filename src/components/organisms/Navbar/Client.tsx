@@ -1,11 +1,11 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import Logo from '../atoms/Logo';
-import NavLink from '../molecules/NavLink';
-import SocialLink from '../molecules/SocialLink';
-import Icon from '../atoms/Icon';
-import { useContactModal } from '../../context/ContactModalContext';
+import Logo from '../../atoms/Logo';
+import NavLink from '../../molecules/NavLink';
+import SocialLink from '../../molecules/SocialLink';
+import Icon from '../../atoms/Icon';
+import { useContactModal } from '../../../context/ContactModalContext';
 
 interface NavbarType {
   href: string;
@@ -40,7 +40,7 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
       </a>
       <div className="mx-auto flex items-center justify-between py-4 px-6 relative bg-primary rounded-lg">
         <Logo />
-
+        
         {/* Burger button (mobile only) */}
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -56,17 +56,22 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
         <div className={`${
           isOpen ? "max-h-dvh" : "max-h-[0]"
         } transition-[max-height] duration-300 ease-in-out overflow-hidden absolute block left-0 top-[95%] w-full bg-white lg:static lg:flex lg:items-center lg:gap-6 lg:shadow-none lg:bg-transparent lg:max-h-none lg:justify-center -z-10 lg:z-0`}>
-          <nav className="px-6 py-4 lg:flex lg:gap-6 lg:w-80">
-          {items.map((item) => (
-            <NavLink key={item.href} href={item.href} onClick={() => setIsOpen(false)}>
-              {item.label}
-            </NavLink>
-          ))}
+          <nav className="px-6 py-4 lg:flex lg:gap-6">
+            {items.map((item) => (
+              <NavLink key={item.href} href={item.href} onClick={() => setIsOpen(false)}>
+                {item.label}
+              </NavLink>
+            ))}
             <button
               className="block py-2 text-primary hover:text-tertiary botToTopHover--desktop cursor-pointer"
               onClick={() => {
                 setIsOpen(false);
-                document.getElementById('contactBanner')?.scrollIntoView({ behavior: 'smooth' });
+                const contactBanner = document.getElementById('contactBanner')
+                if (contactBanner) {
+                  contactBanner.scrollIntoView({ behavior: 'smooth' })
+                } else {
+                  window.location.href = "/#contactBanner";
+                }
               }}
             >
               Contact
