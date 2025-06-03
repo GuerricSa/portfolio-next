@@ -54,19 +54,19 @@ body {
     max-width: 449px;
   }
 }
-@media (min-width: 600px) {
+@media (min-width: 640px) {
   .container {
-    max-width: 600px;
+    max-width: 640px;
   }
 }
-@media (min-width: 728px) {
+@media (min-width: 768px) {
   .container {
-    max-width: 728px;
+    max-width: 768px;
   }
 }
-@media (min-width: 984px) {
+@media (min-width: 1024px) {
   .container {
-    max-width: 984px;
+    max-width: 1024px;
   }
 }
 @media (min-width: 1240px) {

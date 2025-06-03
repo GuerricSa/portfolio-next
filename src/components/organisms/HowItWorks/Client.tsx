@@ -61,6 +61,7 @@ const HowItWorksClient: React.FC<HowItWorksClientProps> = ({ steps }) => {
     if (!section || !container) return;
 
     const scrollToPanel = (index: number) => {
+      console.log(window.innerWidth)
       const offset = index * window.innerWidth;
       container.style.transform = `translateX(-${offset}px)`;
     };
