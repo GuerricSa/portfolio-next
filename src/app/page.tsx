@@ -35,7 +35,7 @@ export const metadata: Metadata = {
 export default function Home() {
   return (
     <>
-      <HeroSimple calendlyUrl="https://calendly.com/guerric-sant" calendlyStyle="tertiary" />
+      <HeroSimple calendlyUrl="https://calendly.com/guerric-sant" calendlyStyle="quaternary" />
       <SliderLogos/>
       <HowItWorks />
       <HorizontalAccordion />

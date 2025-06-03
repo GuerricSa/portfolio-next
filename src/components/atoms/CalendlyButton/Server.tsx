@@ -7,6 +7,6 @@ interface CalendlyButtonProps {
   className?: string;
 }
 
-export default function CalendlyButton({ url, variant = 'primary', className = '' }: CalendlyButtonProps): React.ReactElement {
+export default function CalendlyButton({ url, variant, className = '' }: CalendlyButtonProps): React.ReactElement {
   return <CalendlyButtonClient url={url} variant={variant} className={className} />;
 }

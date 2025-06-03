@@ -9,13 +9,13 @@ interface CalendlyButtonProps {
   className?: string;
 }
 
-const CalendlyButtonClient: React.FC<CalendlyButtonProps> = ({ url,variant = 'baseStyle', className = '' }) => {
+const CalendlyButtonClient: React.FC<CalendlyButtonProps> = ({ url,variant, className = '' }) => {
   const [isClient, setIsClient] = useState(false);
   const baseStyle = 'cursor-pointer';
-  const primaryStyle = 'button--primary';
-  const secondaryStyle = 'button--secondary';
-  const tertiaryStyle = 'button--animated-primary'
-  const quaternaryStyle = 'button--animated-secondary'
+  const primaryStyle = 'button--primary cursor-pointer';
+  const secondaryStyle = 'button--secondary cursor-pointer';
+  const tertiaryStyle = 'button--animated-primary cursor-pointer'
+  const quaternaryStyle = 'button--animated-secondary cursor-pointer'
 
   const buttonStyle = variant === 'primary'
     ? primaryStyle
