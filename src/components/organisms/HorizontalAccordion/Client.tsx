@@ -98,7 +98,7 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
             <motion.div
               key={index}
               data-card-text="true"
-              className={`relative overflow-hidden min-h-[250px] lg:min-h-[631px] rounded-lg flex ${
+              className={`relative overflow-hidden min-h-[250px] lg:min-h-[631px] rounded-lg flex cursor-default ${
                 openedCard === index
                   ? openedCardSize
                   : openedCard !== null

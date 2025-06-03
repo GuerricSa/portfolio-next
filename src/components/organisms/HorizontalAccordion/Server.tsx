@@ -10,7 +10,7 @@ const mockData: HorizontalAccordionProps = {
       title: "Site Web",
       titleColor: "#FFFFFF",
       backgroundColor: "rgba(0, 0, 0, 0.7)",
-      description: "<p>Un site professionnel pour présenter votre activité, vos services et faciliter la prise de contact.</p>",
+      description: "<p>Se référencer tout en gagnant en crédibilité</p>",
       content: "Cette offre s'adresse à toute personne ou structure souhaitant être visible en ligne et inspirer confiance. C'est le format classique pour présenter ses services, son parcours et permettre aux visiteurs de prendre contact facilement.",
       included: [
         "À partir de 4 pages (Accueil, Services, À propos, Contact, etc.)",
@@ -28,7 +28,7 @@ const mockData: HorizontalAccordionProps = {
       title: "Landing page",
       titleColor: "#FFFFFF",
       backgroundColor: "rgba(0, 0, 0, 0.7)",
-      description: "<p>Conception d'interfaces utilisateur intuitives et esthétiques pour une expérience optimale.</p>",
+      description: "<p>Convertir grâce à une user experience optimisée</p>",
       content: "Cette offre est parfaite si vous souhaitez promouvoir une offre, un service ou un événement spécifique. Elle est conçue pour convaincre et guider l'utilisateur vers une action précise, sur une seule page optimisée pour la conversion.",
       included: [
         "Conception d'une maquette sur-mesure (à ajouter au budget)",
@@ -47,7 +47,7 @@ const mockData: HorizontalAccordionProps = {
       title: "Maintenance &<br>évolutions",
       titleColor: "#FFFFFF",
       backgroundColor: "rgba(0, 0, 0, 0.7)",
-      description: "Un accompagnement sur mesure pour faire évoluer votre site dans la durée ou assurer sa stabilité technique.",
+      description: "Faites évoluer votre site et continuer à convertir",
       content: "Vous avez déjà un site en ligne et souhaitez le faire évoluer, corriger des bugs ou assurer sa sécurité ? Cette offre vous permet de rester serein·e dans le temps, tout en gardant la flexibilité d'ajouter de nouvelles fonctionnalités selon vos besoins.",
       included: [
         "Corrections de bugs et petits ajustements",
