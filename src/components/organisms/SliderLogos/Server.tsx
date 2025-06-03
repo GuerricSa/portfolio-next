@@ -43,6 +43,18 @@ const clients = [
     alt: 'Logo Piguet Galland',
     width: 168,
     height: 12
+  },
+  {
+    src: '/images/clients_logos/batribox.webp',
+    alt: 'Logo Batribox',
+    width: 100,
+    height: 20
+  },
+  {
+    src: '/images/clients_logos/premium_contact.svg',
+    alt: 'Logo Premium Contact',
+    width: 168,
+    height: 20
   }
 ];
 

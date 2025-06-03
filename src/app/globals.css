@@ -3,11 +3,13 @@
 @import url('../app/style/layout.css');
 @import url('../app/style/typography.css');
 @import url('../app/style/variables.css');
+@import url('../app/style/buttons.css');
 @import url('../app/style/organisms/skills.css');
 @import url('../app/style/organisms/offers.css');
 @import url('../app/style/organisms/works.css');
 @import url('../app/style/organisms/sliderLogos.css');
 @import url('../app/style/organisms/howItWorks.css');
+@import url('../app/style/organisms/horizontalAccordion.css');
 
 :root {
   --background: #ffffff;

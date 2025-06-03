@@ -51,7 +51,29 @@ const HowItWorksClient: React.FC<HowItWorksClientProps> = ({ steps }) => {
     }, delay);
   };
 
+  useEffect(() => {
+    const handleScrollToTop = () => {
+      // Réinitialiser tous les états
+      setActiveIndex(0);
+      isIn.current = false;
+      isLeaving.current = false;
+      isTransitioningToLast.current = false;
+      isAnimating.current = false;
+      exitingCooldown.current = false;
+      specialWheelTimer.current = null;
+      specialWheelTriggeredTwice.current = false;
 
+      // Réinitialiser la position du conteneur
+      if (containerRef.current) {
+        containerRef.current.style.transform = 'translateX(0)';
+      }
+    };
+
+    window.addEventListener('scrollToTop', handleScrollToTop);
+    return () => {
+      window.removeEventListener('scrollToTop', handleScrollToTop);
+    };
+  }, []);
 
   useEffect(() => {
     const section = sectionRef.current;

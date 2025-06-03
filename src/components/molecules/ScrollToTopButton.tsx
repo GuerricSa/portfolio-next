@@ -19,7 +19,14 @@ const ScrollToTopButton: React.FC<ScrollToTopButtonProps> = ({ offset = 300 }) =
   }, [offset]);
 
   const handleClick = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    // Débloquer le scroll avant de remonter
+    document.body.style.overflow = '';
+    // Déclencher un événement personnalisé pour notifier les composants
+    window.dispatchEvent(new CustomEvent('scrollToTop'));
+    // Attendre un court instant pour s'assurer que le scroll est débloqué
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 50);
   };
 
   if (!isVisible) return null;

@@ -37,10 +37,11 @@ const ContactBannerClient: React.FC<ContactBannerClientProps> = ({title, descrip
           <ContactButton
             onClick={openModal}
             ariaLabel="Ouvrir le formulaire de contact"
+            className='button--primary lg:whitespace-nowrap'
           >
             Me contacter
           </ContactButton>
-          <CalendlyButton url="https://calendly.com/guerric-sant" variant="secondary" />
+          <CalendlyButton url="https://calendly.com/guerric-sant" variant="secondary" className='lg:whitespace-nowrap' />
         </div>
       </div>
     </section>

@@ -43,6 +43,8 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
       const isHoverSupported = window.matchMedia('(hover: hover) and (pointer: fine)').matches && window.innerWidth > 1024;
       setHoverSupported(isHoverSupported);
       setIsMobile(window.innerWidth <= 1024)
+      console.log(window.innerWidth)
+      console.log(isMobile)
       calculateContentSize();
     };
 
@@ -62,14 +64,10 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
       } else {
         // Desktop : largeur du container - spacing entre les cartes
         const width = cardsRef.current.getBoundingClientRect().width;
-        console.log("width :", width)
         const gap = (0.25 * 2.5 * 16) * (cards.length - 1); // 0.5rem * 2.5 en px
-        console.log("gap :", gap)
         const padding = (0.25 * 6 * 16) * 2;
-        console.log("padding :", padding)
         const usableWidth = ((width - (gap * 2)) / 2)  - padding;
-        console.log("usableWidth :", usableWidth)
-        setContentSize(usableWidth ); // Pourcentage pris par la carte ouverte
+        setContentSize(usableWidth); // Pourcentage pris par la carte ouverte
       }
     };
 
@@ -156,17 +154,15 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
                   className="absolute h-full object-cover w-full"
                 />
               )}
-              <div className="absolute inset-0 bg-black/30" />
-              <div className="absolute inset-0" style={{ backgroundColor: card.backgroundColor }} />
+              <div className="absolute inset-0 bg-primary" />
 
               <div className="relative z-10 w-full flex flex-col justify-between p-6">
                 <div>
                   <h3
                     className="text-3xl md:text-4xl mb-4"
                     style={{ color: card.titleColor }}
-                  >
-                    {card.title}
-                  </h3>
+                    dangerouslySetInnerHTML={{ __html: card.title}}
+                  />
                   <ul className="flex flex-wrap gap-2.5">
                     {card.tags.map((tag, tagIndex) => (
                       <li
@@ -202,14 +198,14 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
                 </div>
                 <div className="mt-auto pt-4 flex justify-between items-end gap-2">
                   <div
-                    className={`w-full lg:max-w-[297px] border-tertiary border-4 rounded text-white transition-transform duration-700 p-2 ${
+                    className={`horizontal-accordion__card-description w-full lg:max-w-[297px] border-tertiary border-4 rounded text-white transition-transform duration-700 p-2 ${
                       openedCard !== index && openedCard !== null
                         ? 'translate-x-[-200px] translate-y-[200px]'
                         : ''
                     }`}
                     dangerouslySetInnerHTML={{ __html: card.description }}
                   />
-                  <div className={`w-11 h-11 rounded-full border border-white flex items-center justify-center shrink-0 relative before:bg-white before:w-3 before:h-[1px] before:absolute before:left-2/4 before:top-2/4 before:-translate-1/2 after:bg-white after:w-[1px] after:h-3 after:absolute after:left-2/4 after:top-2/4 after:transition-transform duration-700 after:-translate-1/2${openedCard === index ? " after:rotate-90" : ""}`}>
+                  <div className={`w-11 h-11 rounded-full border border-white flex items-center justify-center shrink-0 relative before:bg-white before:w-3 before:h-[1px] before:absolute before:left-2/4 before:top-2/4 before:-translate-1/2 after:bg-white after:w-[1px] after:h-3 after:absolute after:left-2/4 after:top-2/4 after:transition-transform duration-700 after:-translate-1/2 ${openedCard === index ? " after:rotate-90" : ""}`}>
                   </div>
                 </div>
               </div>

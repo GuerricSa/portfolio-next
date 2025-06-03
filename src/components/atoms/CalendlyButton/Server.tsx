@@ -3,7 +3,7 @@ import CalendlyButtonClient from './Client';
 
 interface CalendlyButtonProps {
   url: string;
-  variant?: 'primary' | 'secondary' | 'tertiary';
+  variant?: 'primary' | 'secondary' | 'tertiary' | 'quaternary';
   className?: string;
 }
 

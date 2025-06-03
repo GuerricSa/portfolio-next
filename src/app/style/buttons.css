@@ -1,0 +1,96 @@
+.button--primary {
+  color: var(--tertiary_color);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--primary_color);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (hover: hover) {
+  .button--primary:hover {
+    background-color: var(--secondary_color)
+  }
+}
+
+.button--secondary {
+  color: var(--tertiary_color);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  background-color: var(--secondary_color);
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+@media (hover: hover) {
+  .button--secondary:hover {
+    background-color: var(--primary_color)
+  }
+}
+
+.button--animated-primary {
+  --bg: var(--primary_color);
+  --border-angle: 0deg;
+  color: var(--tertiary_color);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  animation: border-angle-rotate 5s infinite linear;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1), background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(var(--primary_color), var(--primary_color)) padding-box,
+  conic-gradient(
+      from var(--border-angle),
+      var(--bg) 50%,
+      var(--tertiary_color)
+    )
+    border-box;
+}
+@media (hover: hover) {
+  .button--animated-primary:hover {
+    color: var(--primary_color);
+    background-color: var(--tertiary_color)
+  }
+}
+
+.button--animated-secondary {
+  --bg: var(--secondary_color);
+  --border-angle: 0deg;
+  color: var(--tertiary_color);
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  border-radius: 0.5rem;
+  border: 2px solid transparent;
+  cursor: pointer;
+  animation: border-angle-rotate 5s infinite linear;
+  transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1), background 300ms cubic-bezier(0.4, 0, 0.2, 1);
+  background: linear-gradient(var(--primary_color), var(--primary_color)) padding-box,
+  conic-gradient(
+      from var(--border-angle),
+      var(--bg) 50%,
+      var(--tertiary_color)
+    )
+    border-box;
+}
+@media (hover: hover) {
+  .button--animated-secondary:hover {
+    color: var(--primary_color);
+    background: var(--tertiary_color)
+  }
+}
+
+@keyframes border-angle-rotate {
+  from { --border-angle: 0deg; }
+  to { --border-angle: 360deg; }
+}
+
+@property --border-angle {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}

@@ -11,14 +11,14 @@ interface ContactButtonProps {
 
 const ContactButton: React.FC<ContactButtonProps> = ({
   onClick,
-  className = '',
+  className = 'button--primary',
   children,
   ariaLabel
 }) => {
   return (
     <button
       onClick={onClick}
-      className={`lg:whitespace-nowrap btn-contact bg-primary text-tertiary font-semibold px-6 py-3 rounded-lg shadow hover:bg-secondary transition cursor-pointer ${className}`}
+      className={className}
       aria-label={ariaLabel}
     >
       {children}

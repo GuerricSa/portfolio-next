@@ -34,10 +34,6 @@ const mockData: HorizontalAccordionProps = {
       title: "Site Web",
       titleColor: "#FFFFFF",
       backgroundColor: "rgba(0, 0, 0, 0.7)",
-      backgroundImage: {
-        src: "/images/web-dev.jpg",
-        alt: "Développement web illustration"
-      },
       description: "<p>Un site professionnel pour présenter votre activité, vos services et faciliter la prise de contact.</p>",
       content: "Cette offre s'adresse à toute personne ou structure souhaitant être visible en ligne et inspirer confiance. C'est le format classique pour présenter ses services, son parcours et permettre aux visiteurs de prendre contact facilement.",
       included: [
@@ -48,24 +44,14 @@ const mockData: HorizontalAccordionProps = {
         "Intégration d'un outil d'analyse (Google Analytics, Plausible, etc.)"
       ],
       tags: [
-        {
-          text: "React",
-          color: "#61DAFB"
-        },
-        {
-          text: "Next.js",
-          color: "#000000"
-        }
+        { text: "Vitrine", color: "##C86FC9" },
+        { text: "SEO", color: "#FF6F61" }
       ]
     },
     {
       title: "Landing page",
       titleColor: "#FFFFFF",
       backgroundColor: "rgba(0, 0, 0, 0.7)",
-      backgroundImage: {
-        src: "/images/ui-design.jpg",
-        alt: "Design UI/UX illustration"
-      },
       description: "<p>Conception d'interfaces utilisateur intuitives et esthétiques pour une expérience optimale.</p>",
       content: "Cette offre est parfaite si vous souhaitez promouvoir une offre, un service ou un événement spécifique. Elle est conçue pour convaincre et guider l'utilisateur vers une action précise, sur une seule page optimisée pour la conversion.",
       included: [
@@ -76,24 +62,15 @@ const mockData: HorizontalAccordionProps = {
         "Formulaire de contact ou de prise de rendez-vous"
       ],
       tags: [
-        {
-          text: "Figma",
-          color: "#F24E1E"
-        },
-        {
-          text: "UI/UX",
-          color: "#FF6B6B"
-        }
+        { text: "Conversion", color: "#5DA9E9" },
+        { text: "UX Design", color: "#6A7B76" }
       ]
+
     },
     {
-      title: "Maintenance & évolutions",
+      title: "Maintenance &<br>évolutions",
       titleColor: "#FFFFFF",
       backgroundColor: "rgba(0, 0, 0, 0.7)",
-      backgroundImage: {
-        src: "/images/digital-marketing.jpg",
-        alt: "Marketing digital illustration"
-      },
       description: "Un accompagnement sur mesure pour faire évoluer votre site dans la durée ou assurer sa stabilité technique.",
       content: "Vous avez déjà un site en ligne et souhaitez le faire évoluer, corriger des bugs ou assurer sa sécurité ? Cette offre vous permet de rester serein·e dans le temps, tout en gardant la flexibilité d'ajouter de nouvelles fonctionnalités selon vos besoins.",
       included: [
@@ -105,15 +82,10 @@ const mockData: HorizontalAccordionProps = {
         "Suivi de performance et améliorations continues"
       ],
       tags: [
-        {
-          text: "SEO",
-          color: "#4285F4"
-        },
-        {
-          text: "Social Media",
-          color: "#E1306C"
-        }
+        { text: "Réactivité", color: "#FF6F61" },
+        { text: "Flexibilité", color: "#8e518d" }
       ]
+
     }
   ]
 };
