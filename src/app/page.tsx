@@ -7,10 +7,10 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Accueil | Guerric SANT - Développeur Web Freelance",
-  description: "Développeur web freelance à Chambéry, spécialisé dans la création de sites internet performants et sur-mesure. Expert en WordPress, HubSpot CMS et React.",
+  description: "Développeur web freelance à Chambéry et en remote, spécialisé dans la création de sites internet performants et sur-mesure. Expert en WordPress, HubSpot CMS et React.",
   openGraph: {
     title: "Guerric SANT - Développeur Web Freelance",
-    description: "Développeur web freelance à Chambéry, spécialisé dans la création de sites internet performants et sur-mesure.",
+    description: "Développeur web freelance à Chambéry et en remote, spécialisé dans la création de sites internet performants et sur-mesure.",
     url: "https://guerric-sant.com",
     siteName: "Guerric SANT",
     images: [
