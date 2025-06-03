@@ -2,33 +2,8 @@
 
 import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import Image from 'next/image'
-
-interface Tag {
-  text: string;
-  color: string;
-}
-
-interface Card {
-  title: string;
-  titleColor: string;
-  backgroundColor: string;
-  backgroundImage?: {
-    src: string;
-    alt: string;
-  };
-  description: string;
-  content: string;
-  included: Array<string>;
-  tags: Tag[];
-}
-
-interface HorizontalAccordionProps {
-  title?: string;
-  subtitle?: string;
-  cards: Card[];
-}
-
+import Image from 'next/image';
+import { HorizontalAccordionProps } from './types';
 
 const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtitle, cards }) => {
   const [hoverSupported, setHoverSupported] = useState(false);
@@ -43,8 +18,6 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
       const isHoverSupported = window.matchMedia('(hover: hover) and (pointer: fine)').matches && window.innerWidth > 1024;
       setHoverSupported(isHoverSupported);
       setIsMobile(window.innerWidth <= 1024)
-      console.log(window.innerWidth)
-      console.log(isMobile)
       calculateContentSize();
     };
 
@@ -189,7 +162,7 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
                     dangerouslySetInnerHTML={{ __html: card.content }}
                   />
                   <ul className="mt-2 list-[circle] list-inside">
-                    {card.included.map((item, index) => (
+                    {card.included?.map((item, index) => (
                       <li className="pt-2 text-white" key={index}>
                         {item}
                       </li>
@@ -198,7 +171,7 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
                 </div>
                 <div className="mt-auto pt-4 flex justify-between items-end gap-2">
                   <div
-                    className={`horizontal-accordion__card-description w-full lg:max-w-[297px] border-tertiary border-4 rounded text-white transition-transform duration-700 p-2 ${
+                    className={`horizontal-accordion__card-description font-semibold min-w-0 w-full lg:max-w-[297px] border-tertiary border-4 rounded text-white transition-transform duration-700 p-2 ${
                       openedCard !== index && openedCard !== null
                         ? 'translate-x-[-200px] translate-y-[200px]'
                         : ''

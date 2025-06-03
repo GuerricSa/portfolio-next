@@ -1,9 +1,28 @@
-# *
+# Allow all crawlers
 User-agent: *
 Allow: /
 
 # Host
 Host: https://guerric-sant.com
 
-# Sitemaps
+# Sitemap location
 Sitemap: https://guerric-sant.com/sitemap.xml
+
+# Disallow admin and private routes
+Disallow: /admin/
+Disallow: /api/
+Disallow: /_next/
+
+# Specific rules for Googlebot
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 10
+
+# Specific rules for Bingbot
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 10
+
+# Specific rules for other bots
+User-agent: *
+Crawl-delay: 10

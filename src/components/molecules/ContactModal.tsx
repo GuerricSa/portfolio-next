@@ -11,7 +11,6 @@ interface ContactModalProps {
 }
 
 const ContactModal: React.FC<ContactModalProps> = ({ onClose }) => {
-  console.log("help", process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY)
   const [formData, setFormData] = useState({ name: '', email: '', message: '' });
   const [responseMsg, setResponseMsg] = useState('');
   const recaptchaRef = useRef<ReCAPTCHA>(null);

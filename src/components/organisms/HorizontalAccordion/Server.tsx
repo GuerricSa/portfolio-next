@@ -1,30 +1,6 @@
 import React from 'react';
 import Client from './Client';
-
-interface Tag {
-  text: string;
-  color: string;
-}
-
-interface Card {
-  title: string;
-  titleColor: string;
-  backgroundColor: string;
-  backgroundImage?: {
-    src: string;
-    alt: string;
-  };
-  description: string;
-  content: string;
-  included?: Array<string>;
-  tags: Tag[];
-}
-
-interface HorizontalAccordionProps {
-  title?: string;
-  subtitle: string;
-  cards: Card[];
-}
+import { HorizontalAccordionProps } from './types';
 
 const mockData: HorizontalAccordionProps = {
   title: "Découvrez nos services",
@@ -44,7 +20,7 @@ const mockData: HorizontalAccordionProps = {
         "Intégration d'un outil d'analyse (Google Analytics, Plausible, etc.)"
       ],
       tags: [
-        { text: "Vitrine", color: "##C86FC9" },
+        { text: "Vitrine", color: "#C86FC9" },
         { text: "SEO", color: "#FF6F61" }
       ]
     },

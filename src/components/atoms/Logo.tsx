@@ -11,7 +11,6 @@ const Logo: React.FC = () => {
         className="text-secondary flex logo--hover-effect w-fit p-2"
         onMouseEnter={(e) => {
           const link = e.currentTarget;
-          console.log(link)
           if (!link.classList.contains('animate')) {
             link.classList.add('animate');
             setTimeout(() => {

@@ -42,7 +42,7 @@ const WorkModal: React.FC<WorkModalProps> = ({ work, onClose }) => {
 
         <div className="grid md:grid-cols-2 gap-8 h-full">
           {/* Colonne de gauche : Image */}
-          <div className="relative h-[40vh] md:h-full rounded-lg overflow-scroll">
+          <div className="relative h-[40vh] md:h-full flex items-center justify-center md:block rounded-lg overflow-scroll">
             <Image
               src={work.image}
               alt={work.title}

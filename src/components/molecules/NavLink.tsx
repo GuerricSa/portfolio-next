@@ -20,7 +20,7 @@ const NavLink: React.FC<NavLinkProps> = ({ href, children, onClick, className = 
       href={href}
       className={`block py-2 ${
         isActive
-          ? "text-primary lg:text-tertiary pointer-events-none"
+          ? "text-primary text-tertiary pointer-events-none"
           : "text-primary hover:text-tertiary botToTopHover--desktop"
       } ${className}`}
       onClick={onClick}

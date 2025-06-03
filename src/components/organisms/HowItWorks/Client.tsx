@@ -83,7 +83,6 @@ const HowItWorksClient: React.FC<HowItWorksClientProps> = ({ steps }) => {
     if (!section || !container) return;
 
     const scrollToPanel = (index: number) => {
-      console.log(window.innerWidth)
       const offset = index * window.innerWidth;
       container.style.transform = `translateX(-${offset}px)`;
     };
@@ -183,7 +182,6 @@ const HowItWorksClient: React.FC<HowItWorksClientProps> = ({ steps }) => {
 
       // Cas 1 : section visible partiellement (entre 10% et 60%) => ancrage automatique
       if (visibleRatio >= 0.6 && visibleRatio < 0.9 && !isIn.current && !isLeaving.current) {
-        console.log("ancrage automatique")
         e.preventDefault();
         window.scrollTo({
           top: section.offsetTop,
