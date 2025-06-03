@@ -10,12 +10,12 @@ export const steps = [
   {
     number: 2,
     title: "Cadrage du projet",
-    description: "<p>L’idée de ce point est de comprendre précisément vos objectifs, votre cible et l’utilisation que vous aurez de votre site internet. Pourquoi ? Parce que cela permet de voir ce qu’il est utile de mettre en place ou non : Site web ou landing page ? Multi-langue ou non ? combien de pages ? quelles fonctionnalités ?<br/>On discute également à ce moment-là des priorités et des délais.<br/><br/>À la fin de cet entretien, je vous donnerai accès à un espace Notion (ou autre si vous avez l’habitude de travailler avec un autre outil), qui nous permettra de suivre : l’avancée du projet, la complétion des tâches…<br/>J’en profiterai également pour vous envoyer un devis précis en fonction de ce qui a été décidé pendant l’entretien.</p>"
+    description: "<p>Ce premier échange permet de clarifier vos objectifs, votre cible et l’usage prévu du site. On définit ensemble les priorités : type de site (vitrine ou landing page), nombre de pages, fonctionnalités, délais...<br/><br/>À l’issue de cet entretien, vous recevrez un devis détaillé ainsi qu’un espace de suivi (Notion ou autre outil si besoin) pour suivre l’avancement du projet.</p>"
   },
   {
     number: 3,
     title: "Copywriting",
-    description: "<p>Avant de pouvoir créer le site, il faut savoir ce qu’on va y mettre.<br/>Ici, 2 options :<ul><li>Vous avez déjà le contenu du site, ou vous souhaitez vous en charger seul.</li><li>Vous n’avez pas encore le contenu du site, et vous n’avez pas le temps ou l’envie de vous en occuper.</li></ul><br/><br/>Si c’est la deuxième option qui vous correspond, pas de souci. Je travaille avec des experts en rédaction et en SEO qui seront capables d’analyser votre secteur d’activité, optimiser pour convertir et pour plaire aux navigateurs.</p>"
+    description: " <p>Avant de créer le site, il faut définir son contenu. Deux possibilités :<ul><li>Vous avez déjà les textes, ou vous souhaitez vous en occuper.</li><li>Vous préférez déléguer cette partie.</li></ul><br/>Dans ce cas, je travaille avec des experts en rédaction et SEO capables d’optimiser votre contenu pour votre cible et pour le référencement.</p>"
   },
   {
     number: 4,
