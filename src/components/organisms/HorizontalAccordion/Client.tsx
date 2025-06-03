@@ -23,22 +23,20 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
 
     const calculateContentSize = () => {
       if (!cardsRef.current) return;
+      const width = cardsRef.current.getBoundingClientRect().width;
+      const padding = (0.25 * 6 * 16) * 2;
+      console.log("width :", width);
+      console.log("padding :", padding);
+
 
       if (isMobile) {
+        console.log("contentSize in mobile")
         // Pour mobile : largeur d'une carte - padding
-        const card = cardsRef.current.querySelector('[data-opened="true"]') as HTMLElement;
-        if (card) {
-          const innerTextDiv = card.querySelector('[data-card-text="true"]') as HTMLElement;
-          if (innerTextDiv) {
-            const width = innerTextDiv.getBoundingClientRect().width;
-            setContentSize(width);
-          }
-        }
+        const usableWidth = width - padding
+        setContentSize(usableWidth);
       } else {
         // Desktop : largeur du container - spacing entre les cartes
-        const width = cardsRef.current.getBoundingClientRect().width;
         const gap = (0.25 * 2.5 * 16) * (cards.length - 1); // 0.5rem * 2.5 en px
-        const padding = (0.25 * 6 * 16) * 2;
         const usableWidth = ((width - (gap * 2)) / 2)  - padding;
         setContentSize(usableWidth); // Pourcentage pris par la carte ouverte
       }

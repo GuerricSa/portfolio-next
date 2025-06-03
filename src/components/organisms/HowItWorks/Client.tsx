@@ -356,12 +356,12 @@ const HowItWorksClient: React.FC<HowItWorksClientProps> = ({ steps }) => {
             key={index}
             className={`how-it-works-panel w-screen flex items-center justify-center${index === activeIndex ? " how-it-works__active-step" : ""}`}
           >
-            <div className="container max-w-xl text-center h-full py-8 flex flex-col">
-              <div className="how-it-works__number w-16 h-16 rounded-full bg-tertiary mx-auto flex items-center justify-center mb-8 relative before:content-[''] before:w-2 before:h-8 before:top-0 before:bg-tertiary before:absolute before:-translate-y-full">
+            <div className="container max-w-xl text-center h-full py-4 lg:py-8 flex flex-col">
+              <div className="how-it-works__number w-16 h-16 rounded-full bg-tertiary mx-auto flex items-center justify-center mb-4 lg:mb-8 relative before:content-[''] before:w-2 before:h-4 before:lg:h-8 before:top-0 before:bg-tertiary before:absolute before:-translate-y-full">
                 <span className="text-primary font-bold text-2xl">{step.number}</span>
               </div>
 
-              <div className="how-it-works__text flex flex-col flex-1 items-center justify-center pb-16">
+              <div className="how-it-works__text flex flex-col flex-1 items-center pb-16">
                 <h3 className="mb-4 text-primary">{step.title}</h3>
                 <div
                   className="text-primary text-center"
