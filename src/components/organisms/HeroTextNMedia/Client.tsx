@@ -62,9 +62,7 @@ const HeroTextNMediaClient: React.FC = () => {
         height={540}
         className="w-[25rem] max-w-full"
         rotation={rotation}
-        priority={true}
-        quality={90}
-        loading="eager"
+        priority
       />
     </section>
   );

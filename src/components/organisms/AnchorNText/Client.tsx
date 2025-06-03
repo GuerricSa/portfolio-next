@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 interface AnchorNTextClientProps {
   chapters: Array<{
@@ -12,14 +12,14 @@ interface AnchorNTextClientProps {
 
 const AnchorNTextClient: React.FC<AnchorNTextClientProps> = ({ chapters }) => {
   const [activeId, setActiveId] = useState("");
+  const activeIdRef = useRef(activeId);
   const [isSideBarVisible, setIsSideBarVisible] = useState(false)
 
   const handleAnchorClick = (id:string) => {
     const element = document.getElementById(id);
+    console.log(element)
     if (element) {
-      const yOffset = 0;
-      const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
-      window.scrollTo({ top: y, behavior: "smooth" });
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
       setIsSideBarVisible(false);
     }
   };
@@ -35,28 +35,31 @@ const AnchorNTextClient: React.FC<AnchorNTextClientProps> = ({ chapters }) => {
     }
   };
 
-  const handleScroll = () => {
-    const threshold = 300;
-
-    const visibleChapters = chapters.filter((chapter) => {
-      const element = document.getElementById(chapter.id);
-      if (!element) return false;
-      const elementTop = element.getBoundingClientRect().top;
-      return elementTop >= 0 && elementTop < threshold;
-    });
-
-    if (visibleChapters.length > 0) {
-      const newActiveId = visibleChapters[0].id;
-      if (newActiveId !== activeId) {
-        setActiveId(newActiveId);
-      }
-    }
-  };
+  useEffect(() => {
+    activeIdRef.current = activeId;
+  }, [activeId]);
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, [activeId]);
+    const scrollHandler = () => {
+      const threshold = 300;
+      const visibleChapters = chapters.filter((chapter) => {
+        const element = document.getElementById(chapter.id);
+        if (!element) return false;
+        const elementTop = element.getBoundingClientRect().top;
+        return elementTop >= 0 && elementTop < threshold;
+      });
+
+      if (visibleChapters.length > 0) {
+        const newActiveId = visibleChapters[0].id;
+        if (newActiveId !== activeIdRef.current) {
+          setActiveId(newActiveId);
+        }
+      }
+    };
+
+    window.addEventListener("scroll", scrollHandler);
+    return () => window.removeEventListener("scroll", scrollHandler);
+  }, []);
 
   return (
     <section
@@ -89,7 +92,7 @@ const AnchorNTextClient: React.FC<AnchorNTextClientProps> = ({ chapters }) => {
                 key={chapter.id}
                 onClick={() => handleAnchorClick(chapter.id)}
                 onKeyPress={(e) => handleKeyPress(e, chapter.id)}
-                className={`text-left text-sm font-medium hover:text-primary transition-all flex items-center gap-2 ${
+                className={`text-left text-sm font-medium hover:text-primary transition-all flex items-center gap-2 cursor-pointer ${
                   activeId === chapter.id ? "text-tertiary font-bold" : "text-primary lg:text-gray-600"
                 }`}
                 role="tab"
