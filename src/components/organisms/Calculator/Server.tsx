@@ -110,7 +110,7 @@ const flow: Flow = {
     question: 'Est-ce une page de vente, un site vitrine, ou un site marchand ?',
     type: 'select',
     options: [
-      { label: 'Une page de vente', value: 'landing', next: 'Q9' },
+      { label: 'Une page de vente', value: 'landing', next: 'E5' },
       { label: 'Un site vitrine', value: 'vitrine', next: 'Q9' },
       { label: 'Un site marchand', value: 'ecommerce', next: 'Q9' },
     ],

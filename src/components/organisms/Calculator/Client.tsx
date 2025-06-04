@@ -113,11 +113,11 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
 
     // Vérification des spécificités
     const specsArray = Array.isArray(answers['Q9']) ? answers['Q9'] : [];
-    if (specsArray.includes('blog')) total += 1000;
-    if (specsArray.includes('api')) total += 1000;
-    if (specsArray.includes('multilingue')) total += Math.max(600, 300 * nbPages);
+    if (specsArray.includes('blog')) total += 800;
+    if (specsArray.includes('api')) total += 800;
+    if (specsArray.includes('multilingue')) total += 800;
 
-    const newText = `D'après les estimations, pour un ${siteType?.toLowerCase() || ''} de ${nbPages} pages, ${hasMockup} ${specs || ""}il faut compter : <span class="block text-tertiary text-4xl font-bold">${total}€</span>
+    const newText = `D'après les estimations, pour ${siteType?.toLowerCase() || ''} de ${nbPages} pages, ${hasMockup} ${specs || ""}il faut compter : <span class="block text-tertiary text-4xl font-bold">${total}€</span>
     Bien sûr, ceci n'est qu'une estimation. Si vous souhaitez approfondir le sujet, prenez un rendez-vous sur mon Calendly ou me contacter directement par message, je serai ravi d'en discuter.`;
 
     return newText;

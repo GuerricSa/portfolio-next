@@ -395,11 +395,13 @@ const HowItWorksClient: React.FC<HowItWorksClientProps> = ({ steps }) => {
               </div>
 
               <div className="how-it-works__text flex flex-col flex-1 items-center pb-16">
+                <div className='p-6 bg-white rounded-lg'>
                 <h3>{step.title}</h3>
                 <div
-                  className="text-primary text-center"
+                  className="text-primary text-left"
                   dangerouslySetInnerHTML={{ __html: step.description }}
                 />
+                </div>
               </div>
             </div>
           </div>

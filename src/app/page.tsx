@@ -4,6 +4,7 @@ import HeroSimple from "../components/organisms/HeroSimple";
 import SliderLogos from "../components/organisms/SliderLogos/Server";
 import HorizontalAccordion from "components/organisms/HorizontalAccordion/Server";
 import { Metadata } from "next";
+import HowItWorksV2 from "components/organisms/HowItWorksV2/Server";
 
 export const metadata: Metadata = {
   title: "Accueil | Guerric SANT - Développeur Web Freelance",
@@ -37,7 +38,7 @@ export default function Home() {
     <>
       <HeroSimple calendlyUrl="https://calendly.com/guerric-sant" calendlyStyle="quaternary" />
       <SliderLogos/>
-      <HowItWorks />
+      <HowItWorksV2 />
       <HorizontalAccordion />
       <ContactBanner />
     </>

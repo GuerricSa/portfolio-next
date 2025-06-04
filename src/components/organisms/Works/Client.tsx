@@ -144,7 +144,7 @@ const WorksClient: React.FC<WorksClientProps> = ({ works }) => {
 
   return (
     <>
-      <section className="py-20 bg-primary" aria-labelledby="works-title">
+      <section className="py-20 bg-primary" aria-labelledby="works-title" id='works'>
         <div className="container">
           <Text variant="h2" id="works-title" className="text-center mb-12 text-secondary">
             Mes réalisations

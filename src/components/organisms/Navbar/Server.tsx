@@ -4,6 +4,7 @@ import Navbar from './Client';
 const navItems = [
   { label: 'Accueil', href: '/' },
   { label: 'À propos', href: '/about' },
+  { label: 'Mes réalisations', href: '/about/#works' },
   { label: 'simulateur', href: '/estimate'}
 ];
 

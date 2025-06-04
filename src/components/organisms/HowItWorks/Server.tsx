@@ -15,7 +15,7 @@ export const steps = [
   {
     number: 3,
     title: "Copywriting",
-    description: " <p>Avant de créer le site, il faut définir son contenu. Deux possibilités :<ul><li>Vous avez déjà les textes, ou vous souhaitez vous en occuper.</li><li>Vous préférez déléguer cette partie.</li></ul><br/>Dans ce cas, je travaille avec des experts en rédaction et SEO capables d’optimiser votre contenu pour votre cible et pour le référencement.</p>"
+    description: "<p>Avant de créer le site, il faut définir son contenu. Deux possibilités :<ul><li>Vous avez déjà les textes, ou vous souhaitez vous en occuper.</li><li>Vous préférez déléguer cette partie.</li></ul><br/>Dans ce cas, je travaille avec des experts en rédaction et SEO capables d’optimiser votre contenu pour votre cible et pour le référencement.</p>"
   },
   {
     number: 4,
