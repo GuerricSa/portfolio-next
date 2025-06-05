@@ -22,7 +22,7 @@ const mockData: HorizontalAccordionProps = {
       tags: [
         { text: "Vitrine", color: "#C86FC9" },
         { text: "e-commerce", color: "#FF6F61" },
-        { text: "blog", color: "#FF6F61" }
+        { text: "blog", color: "#6A7B76" }
       ]
     },
     {
