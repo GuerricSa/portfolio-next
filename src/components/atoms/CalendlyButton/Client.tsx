@@ -5,11 +5,12 @@ import { PopupButton } from 'react-calendly';
 
 interface CalendlyButtonProps {
   url: string;
+  calendlyText?: string;
   variant?: 'primary' | 'secondary' | 'tertiary' | 'quaternary'
   className?: string;
 }
 
-const CalendlyButtonClient: React.FC<CalendlyButtonProps> = ({ url,variant, className = '' }) => {
+const CalendlyButtonClient: React.FC<CalendlyButtonProps> = ({ url, calendlyText, variant, className = '' }) => {
   const [isClient, setIsClient] = useState(false);
   const baseStyle = 'cursor-pointer';
   const primaryStyle = 'button--primary cursor-pointer';
@@ -42,7 +43,7 @@ const CalendlyButtonClient: React.FC<CalendlyButtonProps> = ({ url,variant, clas
       <PopupButton
         url={url}
         rootElement={document.body}
-        text="Prendre rendez-vous"
+        text={calendlyText ? calendlyText : "Prendre rendez-vous"}
         aria-label="Ouvrir le calendrier de rendez-vous"
       />
     </div>

@@ -34,7 +34,7 @@ const ScrollToTopButton: React.FC<ScrollToTopButtonProps> = ({ offset = 300 }) =
   return (
     <button
       onClick={handleClick}
-      className="z-10 -translate-x-2/4 fixed bottom-8 md:bottom-16 left-2/4 bg-primary text-tertiary p-2 rounded-full shadow-lg hover:bg-tertiary hover:text-primary transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-tertiary focus:ring-offset-2 cursor-pointer"
+      className="z-10 -translate-x-2/4 fixed bottom-4 md:bottom-16 left-2/4 bg-primary text-tertiary p-2 rounded-full shadow-lg hover:bg-tertiary hover:text-primary transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-tertiary focus:ring-offset-2 cursor-pointer"
       aria-label="Remonter en haut de la page"
     >
       <span className="sr-only">Remonter en haut de la page</span>

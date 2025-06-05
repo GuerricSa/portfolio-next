@@ -6,7 +6,9 @@ import { motion, AnimatePresence, useSpring, useMotionValue, useTransform } from
 interface Step {
   number: number;
   title: string;
+  subtitle: string;
   description: string;
+  objective?: string;
 }
 
 interface HowItWorksV2ClientProps {
@@ -109,13 +111,13 @@ const HowItWorksV2Client: React.FC<HowItWorksV2ClientProps> = ({ steps }) => {
   };
 
   return (
-    <section ref={sectionRef} className="relative w-full h-screen overflow-hidden flex flex-col">
+    <section ref={sectionRef} className="relative w-full h-screen overflow-x-hidden flex flex-col">
       <h2 className="container text-3xl md:text-4xl font-bold text-primary text-center mb-12">
-        Comment ça marche ?
+        Notre collaboration
       </h2>
 
       {/* Conteneur principal */}
-      <div className="flex-grow flex items-center justify-center border-tertiary border-t-8">
+      <div className="flex-grow flex justify-center border-tertiary border-t-8">
         <svg
           id="progress-line"
           viewBox="0 0 1200 100"
@@ -132,9 +134,9 @@ const HowItWorksV2Client: React.FC<HowItWorksV2ClientProps> = ({ steps }) => {
             strokeDashoffset={dashOffset}
           />
         </svg>
-        <div className="container w-full max-w-4xl mx-auto flex flex-col h-full justify-between relative">
+        <div className="container w-full max-w-4xl mx-auto flex flex-col h-full min-h-0 justify-between relative">
           {/* Slider */}
-          <div className="relative overflow-hidden h-full pt-6">
+          <div className="relative overflow-hidden flex-1 min-h-0 pt-6">
             <AnimatePresence mode="wait" custom={direction}>
               <motion.div
                 key={activeIndex}
@@ -144,11 +146,11 @@ const HowItWorksV2Client: React.FC<HowItWorksV2ClientProps> = ({ steps }) => {
                 animate="center"
                 exit="exit"
                 transition={{ duration: 0.5, ease: "linear" }}
-                className="w-full"
+                className="w-full h-full flex flex-col min-h-0"
               >
-                <div className="items-center h-full">
+                <div className="flex flex-col flex-1 min-h-0">
                   <motion.div
-                    className="w-16 h-16 rounded-full bg-tertiary flex items-center justify-center mb-8 mx-auto relative before:content-[''] before:w-2 before:h-8 before:bg-tertiary before:absolute before:-translate-y-full before:top-0"
+                    className="w-16 h-16 rounded-full bg-tertiary flex items-center justify-center mb-4 lg:mb-8 mx-auto relative before:content-[''] before:w-2 before:h-8 before:bg-tertiary before:absolute before:-translate-y-full before:top-0"
                     initial={{ boxShadow: "0px 0px 0px 0px var(--tertiary_color)" }}
                     animate={{ boxShadow: "0px 0px 45px 1px var(--tertiary_color)" }}
                     transition={{ duration: 0.5, ease: "easeOut", delay: 0.5 }}
@@ -156,12 +158,24 @@ const HowItWorksV2Client: React.FC<HowItWorksV2ClientProps> = ({ steps }) => {
                     <span className="text-primary font-bold text-2xl">{steps[activeIndex].number}</span>
                   </motion.div>
 
-                  <div className="w-full bg-white rounded-lg p-6 shadow-lg">
-                    <h3 className="text-xl font-semibold text-primary mb-4">{steps[activeIndex].title}</h3>
+                  <div className="w-full bg-white rounded-lg p-6 lg:p-10 shadow-lg flex-1 mb-2 overflow-y-auto max-h-[calc(100vh-(4rem+49px+1.5rem+8px+1.5rem+64px+2rem+1rem+40px+1rem+4rem))] min-h-[calc(100vh-(4rem+49px+1.5rem+8px+1.5rem+64px+2rem+1rem+40px+1rem+4rem))]">
+                    {steps[activeIndex].title && (
+                      <h3 className="how-it-works__step-title">{steps[activeIndex].title}</h3>
+                    )}
+                    {steps[activeIndex].subtitle && (
+                      <p className="text-3xl font-semibold text-primary mb-4">{steps[activeIndex].subtitle}</p>
+                    )}
                     <div
                       className="text-primary text-left"
                       dangerouslySetInnerHTML={{ __html: steps[activeIndex].description }}
                     />
+                    {steps[activeIndex].objective && (
+                      <div
+                        className="text-primary text-left pt-4"
+                        dangerouslySetInnerHTML={{ __html: steps[activeIndex].objective }}
+                      />
+                    )}
+
                   </div>
                 </div>
               </motion.div>

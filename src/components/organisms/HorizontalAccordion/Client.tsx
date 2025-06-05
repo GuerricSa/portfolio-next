@@ -147,7 +147,7 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
                   </ul>
                 </div>
                 <div
-                  className={`pt-4 w-full transition-all duration-700 ${
+                  className={`pt-4 w-full transition-all duration-700 text-sm ${
                     openedCard === index
                       ? 'translate-x-0 opacity-full max-h-screen'
                       : 'translate-x-[-200px] opacity-0 max-h-px'

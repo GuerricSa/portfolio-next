@@ -10,36 +10,37 @@ const mockData: HorizontalAccordionProps = {
       title: "Site Web",
       titleColor: "#FFFFFF",
       backgroundColor: "rgba(0, 0, 0, 0.7)",
-      description: "<p>Se référencer tout en gagnant en crédibilité</p>",
-      content: "Cette offre s'adresse à toute personne ou structure souhaitant être visible en ligne et inspirer confiance. C'est le format classique pour présenter ses services, son parcours et permettre aux visiteurs de prendre contact facilement.",
+      description: "<p>Vos visiteurs comprennent, vos prospects vous contactent.</p>",
+      content: "<p>Fatigué de devoir expliquer ce que fait votre entreprise à chaque nouveau prospect ?Marre d’avoir un site qui ne génère aucun lead qualifié ?</p><br /><p><span class='block font-semibold'>Ce que je propose :</span>Je crée un site limpide et fiable, où votre différence saute aux yeux dès la première seconde.Vos visiteurs comprennent ce que vous apportez, et trouvent comment vous contacter facilement.</p>",
       included: [
-        "À partir de 4 pages (Accueil, Services, À propos, Contact, etc.)",
-        "Responsive design (mobile / tablette / desktop)",
-        "Optimisation des temps de chargement et du référencement naturel (SEO)",
-        "Formulaire de contact",
-        "Intégration d'un outil d'analyse (Google Analytics, Plausible, etc.)"
+        "4+ pages essentielles (Accueil, Services, À propos, Contact, et plus si besoin)",
+        "Un design pensé pour tous les écrans, et optimisé en mobile first.",
+        "Un chargement rapide et une optimisation du référencement naturel (SEO)",
+        "Un formulaire de contact simple et accessible",
+        "Un outil d’analyse (Google Analytics, Plausible…) pour suivre ce qui se passe sur votre site"
       ],
       tags: [
         { text: "Vitrine", color: "#C86FC9" },
-        { text: "SEO", color: "#FF6F61" }
+        { text: "e-commerce", color: "#FF6F61" },
+        { text: "blog", color: "#FF6F61" }
       ]
     },
     {
       title: "Landing page",
       titleColor: "#FFFFFF",
       backgroundColor: "rgba(0, 0, 0, 0.7)",
-      description: "<p>Convertir grâce à une user experience optimisée</p>",
-      content: "Cette offre est parfaite si vous souhaitez promouvoir une offre, un service ou un événement spécifique. Elle est conçue pour convaincre et guider l'utilisateur vers une action précise, sur une seule page optimisée pour la conversion.",
+      description: "<p>Convertissez grâce à une user experience optimisée</p>",
+      content: "<p>Vous lancez une nouvelle offre, préparez un événement ou voulez booster vos générations de leads ?</p><br /><p><span class='block font-semibold'>Ce que je propose :</span>Je conçois une landing page ultra-ciblée, pensée pour capter l’attention et guider chaque visiteur vers l’action que vous attendez (inscription, prise de rendez-vous, achat…).</p>",
       included: [
-        "Conception d'une maquette sur-mesure (à ajouter au budget)",
-        "Intégration responsive (HTML / CSS / React ou CMS)",
-        "Argumentaire structuré avec CTA clairs",
-        "Optimisation des performances et du taux de conversion",
-        "Formulaire de contact ou de prise de rendez-vous"
+        "Une maquette sur-mesure, adaptée à votre objectif",
+        "Une intégration responsive sur tous les supports",
+        "Un argumentaire structuré, avec des CTA clairs et visibles",
+        "Une optimisation des performances et du taux de conversion",
+        "Un formulaire de contact ou de réservation, simple et efficace"
       ],
       tags: [
         { text: "Conversion", color: "#5DA9E9" },
-        { text: "UX Design", color: "#6A7B76" }
+        { text: "Lancement", color: "#6A7B76" }
       ]
 
     },
@@ -47,15 +48,14 @@ const mockData: HorizontalAccordionProps = {
       title: "Maintenance &<br>évolutions",
       titleColor: "#FFFFFF",
       backgroundColor: "rgba(0, 0, 0, 0.7)",
-      description: "Faites évoluer votre site et continuer à convertir",
-      content: "Vous avez déjà un site en ligne et souhaitez le faire évoluer, corriger des bugs ou assurer sa sécurité ? Cette offre vous permet de rester serein·e dans le temps, tout en gardant la flexibilité d'ajouter de nouvelles fonctionnalités selon vos besoins.",
+      description: "<p>Faites évoluer votre site et continuez à convertir</p>",
+      content: "<p>Votre site est en ligne, mais vous voulez qu’il reste fiable, sécurisé et toujours à jour ?<brEnvie de corriger un bug, d’ajouter une nouvelle page ou de faire évoluer vos contenus ?</p><br /><p><span class='block font-semibold'>Ce que je propose :</span>Je prends soin de votre site sur la durée : corrections, mises à jour, ajouts de fonctionnalités… Vous restez concentré sur votre activité, je gère le reste.</p>",
       included: [
-        "Corrections de bugs et petits ajustements",
-        "Ajout de nouvelles pages ou de contenus",
-        "Mises à jour régulières (CMS, plugins, sécurité...)",
-        "Assistance sur mesure par mail ou visio",
-        "Maintenance mensuelle ou trimestrielle",
-        "Suivi de performance et améliorations continues"
+        "Corrections de bugs et ajustements rapides",
+        "Ajout de pages ou de nouveaux contenus selon vos besoins",
+        "Mises à jour régulières (CMS, plugins, sécurité…)",
+        "Assistance personnalisée par mail ou en visio",
+        "Suivi des performances et améliorations continues"
       ],
       tags: [
         { text: "Réactivité", color: "#FF6F61" },
