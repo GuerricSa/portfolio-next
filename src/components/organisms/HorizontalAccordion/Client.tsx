@@ -130,15 +130,15 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
               <div className="relative z-10 w-full flex flex-col justify-between p-6">
                 <div>
                   <h3
-                    className="text-3xl md:text-4xl mb-4 lg:whitespace-nowrap"
+                    className="text-3xl md:text-4xl mb-4"
                     style={{ color: card.titleColor }}
                     dangerouslySetInnerHTML={{ __html: card.title}}
                   />
-                  <ul className="flex flex-wrap lg:flex-nowrap gap-2.5">
+                  <ul className="flex flex-wrap gap-2.5">
                     {card.tags.map((tag, tagIndex) => (
                       <li
                         key={tagIndex}
-                        className="lg:whitespace-nowrap px-2.5 py-2 rounded-full text-xs uppercase"
+                        className="px-2.5 py-2 rounded-full text-xs uppercase"
                         style={{ backgroundColor: tag.color }}
                       >
                         {tag.text}
