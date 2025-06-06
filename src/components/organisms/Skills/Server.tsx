@@ -47,7 +47,7 @@ import slackLogo from '../../../../public/images/skills_logos/slack.svg';
     frontendLogos: {
       title: 'Frontend',
       content:
-        '<p>Le front-end, c\'est la partie visible d\'un site : ce que les utilisateurs voient et avec quoi ils interagissent. Cela inclut l\'affichage des contenus, les animations, les boutons ou encore la navigation.</p><p>J\'utilise principalement <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, <strong>React</strong> et <strong>Tailwind CSS</strong> pour créer des interfaces modernes, rapides et adaptées à tous les écrans.</p><p>C\'est le coeur de mon métier et ce pourquoi la majorité de mes clients me paient.</p>',
+        '<p>Le front-end, c\'est la partie visible d\'un site : ce que les utilisateurs voient et avec quoi ils interagissent. Cela inclut l\'affichage des contenus, les animations, les boutons ou encore la navigation.</p><p>J\'utilise principalement <strong>HTML</strong>, <strong>CSS</strong>, <strong>JavaScript</strong>, <strong>React</strong> et <strong>Tailwind CSS</strong> pour créer des interfaces modernes, rapides et adaptées à tous les écrans.</p>',
     },
     backendLogos: {
       title: 'Backend',
@@ -57,13 +57,15 @@ import slackLogo from '../../../../public/images/skills_logos/slack.svg';
     cmsLogos: {
       title: 'CMS',
       content:
-        '<p>Un CMS (Content Management System) est un outil qui permet de créer et gérer un site sans avoir à coder toute la structure à la main. C\'est très pratique pour les sites vitrines ou les blogs.</p><p>Je maîtrise plusieurs CMS populaires comme <strong>WordPress</strong>, <strong>Drupal</strong> et <strong>HubSpot</strong>. Je les utilise pour créer des sites faciles à mettre à jour, performants et bien référencés.</p><p>Dans mon dernier job, j\'ai beaucoup travaillé sur <strong>HubSpot</strong> et <strong>Wordpress</strong>pour intégrer des pages sur-mesure et accompagner des clients B2B dans leur stratégie web.</p>',
+        '<p>Un CMS (Content Management System) est un outil qui permet de créer et gérer un site sans avoir à coder toute la structure à la main. C\'est très pratique pour les sites vitrines ou les blogs.</p><p>Je maîtrise plusieurs CMS populaires comme <strong>WordPress</strong>, <strong>Drupal</strong> et <strong>HubSpot</strong>. Je les utilise pour créer des sites faciles à mettre à jour, performants et bien référencés.</p><p>Dans mon dernier job, j\'ai beaucoup travaillé sur <strong>HubSpot</strong> et <strong>Wordpress</strong> pour intégrer des pages sur-mesure et accompagner des clients B2B dans leur stratégie web.</p>',
     },
     toolsLogos: {
       title: 'Autres outils',
       content:
-        '<p>Au-delà du code, j\'utilise plusieurs outils pour mieux collaborer, structurer mes projets ou concevoir des maquettes avant le développement.</p><p><strong>Figma</strong> me permet de transformer des idées en maquettes visuelles claires. <strong>Notion</strong> est mon centre de gestion de projet : je m\'en sers pour organiser les tâches et échanger avec mes clients, je m\'en sers d\'ailleurs aussi pour gérer mon entreprise</strong>. Slack est un outil de communication rapide, très utilisé en équipe.</p><p>Bien sur, il y a de nombreux autres outils avec lesquelles je peux travailler. Que ce soit chez Microsoft ou chez Google.</p>',
+        '<p>Au-delà du code, j\'utilise plusieurs outils pour mieux collaborer, structurer mes projets ou concevoir des maquettes avant le développement.<br /><br /><ul class="list-inside list-disc"><li>Figma me permet de transformer des idées en maquettes visuelles claires.</li><li>Notion est mon centre de gestion de projet : je m\'en sers pour organiser les tâches et échanger avec mes clients, je m\'en sers d\'ailleurs aussi pour gérer mon entreprise.</li><li>Slack est l’outil de communication que j’ai le plus utilisé sur mes projets. Je peux aussi m’adapter à d’autres moyens de communication sans aucun problème.</li></ul><br /><br />Bien sur, il y a de nombreux autres outils avec lesquelles je peux travailler. Que ce soit chez Microsoft ou chez Google.</p>'
     },
+
+
   };
 
   export default function Skills(): React.ReactElement {

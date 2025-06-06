@@ -7,7 +7,7 @@ interface SkillDescriptionProps {
   title: string;
   content: string;
   isActive: boolean;
-  minHeight: number;
+  minHeight?: number;
 }
 
 const SkillDescription = forwardRef<HTMLDivElement, SkillDescriptionProps>(

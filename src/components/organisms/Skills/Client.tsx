@@ -34,39 +34,26 @@ const SkillsClient: React.FC<SkillsClientProps> = ({
 }) => {
   const [activeDescription, setActiveDescription] = useState('frontendLogos');
   const [containerHeight, setContainerHeight] = useState(0);
-  const [isDesktop, setIsDesktop] = useState(false);
   const descriptionRefs = useRef<Record<string, HTMLDivElement | null>>({});
+  const circleRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
+
     const updateHeight = () => {
-      const nodes = Object.values(descriptionRefs.current);
-      if (!nodes.length) return;
+      const currentDescriptionEl = descriptionRefs.current[activeDescription];
+      const circleEl = circleRef.current;
 
-      nodes.forEach((node) => {
-        if (node) {
-          node.style.minHeight = 'auto';
-        }
-      });
+      if (!currentDescriptionEl || !circleEl) return;
 
-      let maxHeight = 0;
+      const descriptionHeight = currentDescriptionEl.offsetHeight;
+      const circleHeight = circleEl.offsetHeight;
 
-      nodes.forEach((node) => {
-        if (node) {
-          const height = node.getBoundingClientRect().height;
-          if (height > maxHeight) {
-            maxHeight = height;
-          }
-        }
-      });
+      const newHeight = window.innerWidth >= 728
+        ? Math.max(descriptionHeight, circleHeight)
+        : descriptionHeight;
 
-      if (window.innerWidth >= 728) {
-        setIsDesktop(true);
-        setContainerHeight(maxHeight > 450 ? maxHeight : 450);
-      } else {
-        setIsDesktop(false);
-        setContainerHeight(maxHeight);
-      }
-    };
+      setContainerHeight(newHeight);
+    }
 
     updateHeight();
 
@@ -80,7 +67,8 @@ const SkillsClient: React.FC<SkillsClientProps> = ({
     return () => {
       window.removeEventListener('resize', handleWindowResize);
     };
-  }, [isDesktop]);
+
+  }, [activeDescription]);
 
   return (
     <section className="bg-primary py-12" aria-labelledby="skills-title">
@@ -88,8 +76,22 @@ const SkillsClient: React.FC<SkillsClientProps> = ({
         <Text variant="h2" id="skills-title" className="text-secondary mb-8 lg:mb-12">
           Mes compétences techniques
         </Text>
+        <nav className="mb-6 lg:mb-8" aria-label="Filtres de projets">
+          <ul className="flex gap-2 lg:gap-4 flex-wrap">
+            {Object.entries(descriptions).map(([key, desc]) => (
+              <li key={key}>
+                <button
+                  onClick={() => setActiveDescription(key)}
+                  className={`bg-secondary rounded-md py-2 px-4 font-semibold border-2 border-secondary transition duration-500 cursor-pointer hover:bg-tertiary hover:text-secondary hover:opacity-[0.7] ${key === activeDescription ? 'bg-tertiary text-secondary pointer-events-none hover:opacity-[1]' : '' }`}
+                >
+                  {desc.title}
+                </button>
+              </li>
+            ))}
+          </ul>
+        </nav>
         <div className="flex flex-col md:flex-row-reverse justify-between gap-5">
-          <div className="w-full md:w-1/2 bg-secondary rounded-md p-8" role="region" aria-label="Compétences techniques">
+          <div className="w-full md:w-1/2 bg-secondary rounded-md p-8 h-fit" ref={circleRef} role="region" aria-label="Compétences techniques">
             <div className="circle-container relative h-[600px]">
               <SkillCircle
                 className='circle circle-1'
@@ -122,7 +124,7 @@ const SkillsClient: React.FC<SkillsClientProps> = ({
             </div>
           </div>
           <div
-            className="w-full md:w-1/2 h-full relative"
+            className="w-full md:w-1/2 h-full relative transition-minHeight duration-500 linear"
             id='descriptionContainer'
             style={{ minHeight: containerHeight ? containerHeight : 'auto' }}
             role="region"
@@ -134,7 +136,6 @@ const SkillsClient: React.FC<SkillsClientProps> = ({
                 title={desc.title}
                 content={desc.content}
                 isActive={activeDescription === key}
-                minHeight={containerHeight}
                 ref={(el) => { descriptionRefs.current[key] = el }}
               />
             ))}
