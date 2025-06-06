@@ -36,39 +36,33 @@ const SkillsClient: React.FC<SkillsClientProps> = ({
   const [containerHeight, setContainerHeight] = useState(0);
   const descriptionRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const circleRef = useRef<HTMLDivElement>(null);
-  const [isMobile, setIsMobile] = useState(false);
-
 
   useEffect(() => {
+
     const updateHeight = () => {
       const currentDescriptionEl = descriptionRefs.current[activeDescription];
       const circleEl = circleRef.current;
-
-      const mobile = window.innerWidth < 728;
-      setIsMobile(mobile);
 
       if (!currentDescriptionEl || !circleEl) return;
 
       const descriptionHeight = currentDescriptionEl.offsetHeight;
       const circleHeight = circleEl.offsetHeight;
 
-      if (mobile) {
-        setContainerHeight(0); // on ne force rien
-      } else {
-        const newHeight = Math.max(descriptionHeight, circleHeight);
-        setContainerHeight(newHeight);
-      }
-    };
+      const newHeight = window.innerWidth >= 728
+        ? Math.max(descriptionHeight, circleHeight)
+        : descriptionHeight;
+
+      setContainerHeight(newHeight);
+    }
 
     updateHeight();
-    const handleResize = () => {
-      setContainerHeight(0);
-      requestAnimationFrame(updateHeight);
-    };
-    window.addEventListener('resize', handleResize);
+
+    window.addEventListener('resize', updateHeight);
+
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener('resize', updateHeight);
     };
+
   }, [activeDescription]);
 
   return (
@@ -127,7 +121,7 @@ const SkillsClient: React.FC<SkillsClientProps> = ({
           <div
             className="w-full md:w-1/2 h-full relative transition-minHeight duration-500 linear"
             id='descriptionContainer'
-            style={{ minHeight: isMobile ? 'auto' : containerHeight || 'auto' }}
+            style={{ minHeight: containerHeight ? containerHeight : 'auto' }}
             role="region"
             aria-label="Description des compétences"
           >
