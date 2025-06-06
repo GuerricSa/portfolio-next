@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
+import { usePathname } from 'next/navigation';
 import Logo from '../../atoms/Logo';
 import NavLink from '../../molecules/NavLink';
 import SocialLink from '../../molecules/SocialLink';
@@ -20,6 +21,7 @@ interface NavbarProps {
 const Navbar: React.FC<NavbarProps> = ({ items }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { openModal } = useContactModal();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -29,6 +31,13 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  const isActiveLink = (href: string) => {
+    if (href === '/') {
+      return pathname === href;
+    }
+    return pathname.startsWith(href);
+  };
 
   return (
     <header className="mx-auto max-w-[1400px] pt-2.5 px-4 z-10 relative">
@@ -60,6 +69,7 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
           <nav className="px-6 py-4 lg:flex lg:gap-6">
           {items.map((item) => {
             const isAnchorLink = item.href.includes('#');
+            const isActive = isActiveLink(item.href);
 
             if (isAnchorLink) {
               return (
@@ -68,7 +78,9 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
                   href={item.href}
                   scroll={true}
                   onClick={() => setIsOpen(false)}
-                  className="block py-2 text-primary hover:text-tertiary botToTopHover--desktop cursor-pointer"
+                  className={`block py-2 hover:text-tertiary cursor-pointer ${
+                    isActive ? 'text-tertiary' : 'text-primary botToTopHover--desktop'
+                  }`}
                 >
                   {item.label}
                 </Link>
@@ -79,7 +91,9 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
                   key={item.href}
                   href={item.href}
                   onClick={() => setIsOpen(false)}
-                  className="block py-2 text-primary hover:text-tertiary botToTopHover--desktop cursor-pointer"
+                  className={`block py-2 hover:text-tertiary cursor-pointer ${
+                    isActive ? 'text-tertiary' : 'text-primary botToTopHover--desktop'
+                  }`}
                 >
                   {item.label}
                 </NavLink>
@@ -87,7 +101,9 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
             }
           })}
             <button
-              className="block py-2 text-primary hover:text-tertiary botToTopHover--desktop cursor-pointer"
+              className={`block py-2 hover:text-tertiary cursor-pointer ${
+                pathname === '/#contactBanner' ? 'text-tertiary' : 'text-primary botToTopHover--desktop'
+              }`}
               onClick={() => {
                 setIsOpen(false);
                 const contactBanner = document.getElementById('contactBanner')
