@@ -111,7 +111,7 @@ const HowItWorksV2Client: React.FC<HowItWorksV2ClientProps> = ({ steps }) => {
   };
 
   return (
-    <section ref={sectionRef} className="relative w-full h-screen overflow-x-hidden flex flex-col">
+    <section ref={sectionRef} className="relative w-full h-screen overflow-hidden flex flex-col">
       <h2 className="container text-3xl md:text-4xl font-bold text-primary text-center mb-12">
         Notre collaboration
       </h2>
