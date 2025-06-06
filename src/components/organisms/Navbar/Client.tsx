@@ -66,7 +66,7 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
                 <Link
                   key={item.href}
                   href={item.href}
-                  scroll={false}
+                  scroll={true}
                   onClick={() => setIsOpen(false)}
                   className="block py-2 text-primary hover:text-tertiary botToTopHover--desktop cursor-pointer"
                 >

@@ -53,7 +53,13 @@
 @media (hover: hover) {
   .button--animated-primary:hover {
     color: var(--primary_color);
-    background-color: var(--tertiary_color)
+    background: linear-gradient(var(--tertiary_color), var(--tertiary_color)) padding-box,
+    conic-gradient(
+        from var(--border-angle),
+        var(--bg) 50%,
+        var(--secondary_color)
+      )
+    border-box;
   }
 }
 
@@ -75,12 +81,18 @@
       var(--bg) 50%,
       var(--tertiary_color)
     )
-    border-box;
+  border-box;
 }
 @media (hover: hover) {
   .button--animated-secondary:hover {
     color: var(--primary_color);
-    background: var(--tertiary_color)
+    background: linear-gradient(var(--tertiary_color), var(--tertiary_color)) padding-box,
+    conic-gradient(
+        from var(--border-angle),
+        var(--bg) 50%,
+        var(--primary_color)
+      )
+      border-box;
   }
 }
 
