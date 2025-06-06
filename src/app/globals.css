@@ -41,7 +41,7 @@
 
 body {
   background-color: var(--color-secondary);
-  color: var(--foreground);
+  color: var(--color-primary);
 }
 
 .container {
