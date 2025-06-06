@@ -5,7 +5,11 @@ export const verifyCaptcha = async (token: string): Promise<boolean> => {
     return true;
   }
 
-  if (!token) return false;
+  if (!token) {
+    console.error('Token reCAPTCHA manquant');
+    return false;
+  }
+
   const secret = process.env.RECAPTCHA_SECRET_KEY;
 
   if (!secret) {
@@ -14,6 +18,8 @@ export const verifyCaptcha = async (token: string): Promise<boolean> => {
   }
 
   try {
+    console.log('Tentative de vérification reCAPTCHA avec token:', token.substring(0, 10) + '...');
+
     const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
       method: 'POST',
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -21,6 +27,12 @@ export const verifyCaptcha = async (token: string): Promise<boolean> => {
     });
 
     const data = await response.json();
+    console.log('Réponse reCAPTCHA:', data);
+
+    if (!data.success) {
+      console.error('Erreurs reCAPTCHA:', data['error-codes']);
+    }
+
     return data.success;
   } catch (error) {
     console.error('Erreur vérification Captcha :', error);
