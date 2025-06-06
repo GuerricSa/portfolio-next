@@ -18,7 +18,7 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
     const checkHoverSupport = () => {
       const isHoverSupported = window.matchMedia('(hover: hover) and (pointer: fine)').matches && window.innerWidth > 1024;
       setHoverSupported(isHoverSupported);
-      setIsMobile(window.innerWidth <= 1024)
+      setIsMobile(window.innerWidth <= 1024);
       calculateContentSize();
     };
 
@@ -29,7 +29,7 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
 
       if (isMobile) {
         // Pour mobile : largeur d'une carte - padding
-        const usableWidth = width - padding
+        const usableWidth = width - padding;
         setContentSize(usableWidth);
       } else {
         // Desktop : largeur du container - spacing entre les cartes
@@ -41,16 +41,16 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
 
     checkHoverSupport();
     calculateContentSize();
-    window.addEventListener('resize', () => {
+
+    const handleResize = () => {
       calculateContentSize();
-      checkHoverSupport()
-    });
+      checkHoverSupport();
+    };
+
+    window.addEventListener('resize', handleResize);
 
     return () => {
-      window.removeEventListener('resize', () => {
-        calculateContentSize();
-        checkHoverSupport()
-      });
+      window.removeEventListener('resize', handleResize);
       if (hoverTimeoutRef.current) {
         clearTimeout(hoverTimeoutRef.current);
       }
@@ -87,19 +87,6 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
     }, 50); // Petit délai pour éviter les changements trop rapides
   };
 
-  let openedCardSize = "";
-  let notOpenedCardSize = ""
-  let closedCardSize = ""
-  if (isMobile) {
-    openedCardSize = "min-h-[350px]";
-    notOpenedCardSize = "min-h-[150px]"
-    closedCardSize = "min-h-[150px]"
-  } else {
-    openedCardSize = "w-2/4";
-    notOpenedCardSize = "w-1/3"
-    closedCardSize = "w-1/4"
-  }
-
   return (
     <section ref={sectionRef} className="py-16 px-4 md:px-8 container">
       <div className="mx-auto">
@@ -119,12 +106,14 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
             <motion.div
               key={index}
               data-card-text="true"
-              className={`relative overflow-hidden min-h-[250px] lg:min-h-[631px] rounded-lg flex cursor-default ${
-                openedCard === index
-                  ? openedCardSize
-                  : openedCard !== null
-                  ? closedCardSize
-                  : notOpenedCardSize
+              className={`relative overflow-hidden rounded-lg flex cursor-default ${
+                isMobile
+                  ? 'min-h-[250px]'
+                  : openedCard === index
+                    ? 'w-2/4'
+                    : openedCard !== null
+                      ? 'w-1/4'
+                      : 'w-1/3'
               } transition-all duration-700 ease-in-out`}
               style={{
                 '--title-color': card.titleColor,
