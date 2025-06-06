@@ -42,6 +42,7 @@ const CalendlyButtonClient: React.FC<CalendlyButtonProps> = ({ url, calendlyText
     >
       <PopupButton
         url={url}
+        className='cursor-pointer'
         rootElement={document.body}
         text={calendlyText ? calendlyText : "Prendre rendez-vous"}
         aria-label="Ouvrir le calendrier de rendez-vous"
