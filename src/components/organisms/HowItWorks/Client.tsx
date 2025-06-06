@@ -53,7 +53,6 @@ const HowItWorksClient: React.FC<HowItWorksClientProps> = ({ steps }) => {
 
   useEffect(() => {
     const handleScrollToTop = () => {
-      console.log("scrolltotop")
       // Réinitialiser tous les états
       setActiveIndex(0);
       isIn.current = false;
@@ -143,9 +142,6 @@ const HowItWorksClient: React.FC<HowItWorksClientProps> = ({ steps }) => {
 
         const sectionYTop = currentY + rect.top;
         const sectionYBottom = currentY + rect.bottom;
-        console.log("currentY :", currentY);
-        console.log("targetY :", targetY);
-        console.log("sectionYTop :", sectionYTop);
         // Si on va passer à travers la section
         if (targetY < sectionYTop && currentY > sectionYTop) {
           return true;
@@ -159,7 +155,6 @@ const HowItWorksClient: React.FC<HowItWorksClientProps> = ({ steps }) => {
 
       // ➤ Cas spécial : on vient de passer à la dernière slide, on attend un scroll supplémentaire pour déverrouiller
       if (isTransitioningToLast.current) {
-        console.log("cas spécial")
         e.preventDefault();
 
         if (specialWheelTriggeredTwice.current) {
@@ -207,7 +202,6 @@ const HowItWorksClient: React.FC<HowItWorksClientProps> = ({ steps }) => {
 
       // Cas 1 : section visible partiellement (entre 10% et 60%) => ancrage automatique
       if (visibleRatio >= 0.6 && visibleRatio < 0.9 && !isIn.current && !isLeaving.current) {
-        console.log("cas 1")
         e.preventDefault();
         window.scrollTo({
           top: section.offsetTop,
@@ -220,7 +214,6 @@ const HowItWorksClient: React.FC<HowItWorksClientProps> = ({ steps }) => {
       // Cas 2 : section totalement hors champ → scroll natif
       if (rect.bottom <= 0 || rect.top >= window.innerHeight) {
         if (willPassThroughSection(e.deltaY)) return;
-        console.log("cas 2")
         isLeaving.current = false;
         unlockScroll();
         return;
@@ -229,15 +222,12 @@ const HowItWorksClient: React.FC<HowItWorksClientProps> = ({ steps }) => {
     // ➤ Cas 3 : scroll vers l'extérieur autorisé
     if ((activeIndex === 0 && e.deltaY < 0) || (activeIndex === steps.length - 1 && e.deltaY > 0)) {
       if (willPassThroughSection(e.deltaY)) return;
-      console.log("cas 3")
       if (exitingCooldown.current) {
-        console.log("cooldown")
         e.preventDefault();
         return;
       }
       // Bloquer cas 3 si timer spécial actif
       if (specialWheelTimer.current !== null) {
-        console.log("timer spécial")
         e.preventDefault();
         return;
       }
@@ -252,7 +242,6 @@ const HowItWorksClient: React.FC<HowItWorksClientProps> = ({ steps }) => {
 
       // ➤ Cas 4 : section bien visible (>= 60%) → scroll horizontal forcé
       if (isFullyVisible) {
-        console.log("cas 4")
         window.scrollTo({
           top: section.offsetTop,
           behavior: 'smooth',

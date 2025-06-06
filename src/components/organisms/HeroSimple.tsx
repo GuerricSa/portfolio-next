@@ -9,7 +9,6 @@ interface HeroSimpleProps {
 }
 
 const HeroSimple: React.FC<HeroSimpleProps> = ({ calendlyUrl, calendlyText, calendlyStyle }) => {
-  console.log(calendlyStyle)
   return (
     <section className="container flex flex-col items-center justify-center text-center space-y-6 px-4 py-12 md:py-16 lg:py-20">
       <Text variant="h1" className="text-3xl md:text-4xl lg:text-5xl">

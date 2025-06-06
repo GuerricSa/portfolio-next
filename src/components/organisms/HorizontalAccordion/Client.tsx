@@ -12,6 +12,7 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
   const [contentSize, setContentSize] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
+  const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
     const checkHoverSupport = () => {
@@ -25,12 +26,8 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
       if (!cardsRef.current) return;
       const width = cardsRef.current.getBoundingClientRect().width;
       const padding = (0.25 * 6 * 16) * 2;
-      console.log("width :", width);
-      console.log("padding :", padding);
-
 
       if (isMobile) {
-        console.log("contentSize in mobile")
         // Pour mobile : largeur d'une carte - padding
         const usableWidth = width - padding
         setContentSize(usableWidth);
@@ -41,7 +38,6 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
         setContentSize(usableWidth); // Pourcentage pris par la carte ouverte
       }
     };
-
 
     checkHoverSupport();
     calculateContentSize();
@@ -55,6 +51,9 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
         calculateContentSize();
         checkHoverSupport()
       });
+      if (hoverTimeoutRef.current) {
+        clearTimeout(hoverTimeoutRef.current);
+      }
     };
   }, [isMobile, cards.length]);
 
@@ -66,17 +65,39 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
     }
   };
 
+  const handleMouseEnter = (index: number) => {
+    if (!hoverSupported) return;
+
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+
+    setOpenedCard(index);
+  };
+
+  const handleMouseLeave = () => {
+    if (!hoverSupported) return;
+
+    if (hoverTimeoutRef.current) {
+      clearTimeout(hoverTimeoutRef.current);
+    }
+
+    hoverTimeoutRef.current = setTimeout(() => {
+      setOpenedCard(null);
+    }, 50); // Petit délai pour éviter les changements trop rapides
+  };
+
   let openedCardSize = "";
   let notOpenedCardSize = ""
   let closedCardSize = ""
   if (isMobile) {
-  openedCardSize = "min-h-[350px]";
-  notOpenedCardSize = "min-h-[150px]"
-  closedCardSize = "min-h-[150px]"
+    openedCardSize = "min-h-[350px]";
+    notOpenedCardSize = "min-h-[150px]"
+    closedCardSize = "min-h-[150px]"
   } else {
-  openedCardSize = "w-2/4";
-  notOpenedCardSize = "w-1/3"
-  closedCardSize = "w-1/4"
+    openedCardSize = "w-2/4";
+    notOpenedCardSize = "w-1/3"
+    closedCardSize = "w-1/4"
   }
 
   return (
@@ -113,8 +134,8 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
               animate={{ opacity: 1 }}
               transition={{ delay: index * 0.12 }}
               onClick={() => !hoverSupported && handleCardClick(index)}
-              onMouseEnter={() => hoverSupported && handleCardClick(index)}
-              onMouseLeave={() => hoverSupported && setOpenedCard(null)}
+              onMouseEnter={() => handleMouseEnter(index)}
+              onMouseLeave={handleMouseLeave}
             >
               {card.backgroundImage && (
                 <Image
@@ -154,7 +175,6 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
                   }`}
                   style={{width: `${contentSize}px`}}
                 >
-
                   <div
                     className='text-white'
                     dangerouslySetInnerHTML={{ __html: card.content }}
