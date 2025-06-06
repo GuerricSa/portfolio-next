@@ -326,8 +326,8 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
                   <div className="relative w-full">
                     <input
                       type="range"
-                      min={current.min}
-                      max={current.max}
+                      min={current.min ? current.min : 0}
+                      max={current.max ? current.max : 10}
                       step={current.step || 1}
                       value={answers[step] !== undefined ? Number(answers[step]) : current.min}
                       onChange={(e) => {
@@ -335,7 +335,7 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
                         setAnswers((prev) => ({ ...prev, [step]: numericValue }));
                       }}
                       className="w-full range-slider"
-                      style={{background: `linear-gradient(to right, var(--tertiary_color) 0%, var(--tertiary_color) ${(answers[step] ? (Number(answers[step]) -1) : 0) / (current.max -1) * 100}%, var(--primary_color) ${((answers[step] ? (Number(answers[step]) -1) : 0) / (current.max -1) * 100)}%, var(--primary_color) 100%)` }}
+                      style={{background: `linear-gradient(to right, var(--tertiary_color) 0%, var(--tertiary_color) ${(answers[step] ? (Number(answers[step]) -1) : 0) / ((current.max ? current.max : 10) -1) * 100}%, var(--primary_color) ${((answers[step] ? (Number(answers[step]) -1) : 0) / ((current.max ? current.max : 10) -1) * 100)}%, var(--primary_color) 100%)` }}
                     />
                     <div className="text-sm text-orange-600 font-semibold mt-2 text-center">
                       {answers[step] === current.max
