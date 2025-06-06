@@ -183,7 +183,7 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
                 ref={recaptchaRef}
               />
             )}
-            <button type="submit" className="bg-primary text-secondary font-semibold px-4 py-2 rounded hover:bg-tertiary hover:text-primary transition">Envoyer</button>
+            <button type="submit" className="bg-primary text-secondary font-semibold px-4 py-2 rounded hover:bg-tertiary hover:text-primary transition cursor-pointer">Envoyer</button>
             {responseMsg && <p>{responseMsg}</p>}
           </form>
         </div>
@@ -204,11 +204,11 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
           <div className="flex gap-4 flex-wrap items-center justify-center mt-4 md:mt-0 flex-row md:flex-col lg:flex-nowrap lg:flex-row">
             <button
               onClick={handleRestart}
-              className="lg:whitespace-nowrap btn-contact bg-primary text-tertiary font-semibold px-6 py-3 rounded-lg shadow hover:bg-secondary transition"
+              className="lg:whitespace-nowrap btn-contact bg-primary text-tertiary font-semibold px-6 py-3 rounded-lg shadow hover:bg-secondary transition cursor-pointer"
             >
               Recommencez une estimation
             </button>
-            <div className='btn-contact btn-calendly whitespace-nowrap bg-secondary text-tertiary font-semibold rounded-lg hover:bg-primary transition'>
+            <div className='btn-contact btn-calendly whitespace-nowrap bg-secondary text-tertiary font-semibold rounded-lg hover:bg-primary transition cursor-pointer'>
               {rootElement &&
                 <PopupButton
                   url="https://calendly.com/guerric-sant"
@@ -246,7 +246,7 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
                     window.location.href = '/';
                   }, 2000);
                 }}
-                className="bg-primary text-secondary font-semibold px-4 py-2 rounded hover:bg-tertiary hover:text-primary transition"
+                className="bg-primary text-secondary font-semibold px-4 py-2 rounded hover:bg-tertiary hover:text-primary transition cursor-pointer"
               >
                 Envoyer
               </button>
@@ -257,7 +257,7 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
         <div className="flex gap-4 flex-wrap items-center justify-center mt-4 md:mt-0 flex-row md:flex-col lg:flex-nowrap lg:flex-row">
           <button
             onClick={handleRestart}
-            className="lg:whitespace-nowrap btn-contact bg-primary text-tertiary font-semibold px-6 py-3 rounded-lg shadow hover:bg-secondary transition"
+            className="lg:whitespace-nowrap btn-contact bg-primary text-tertiary font-semibold px-6 py-3 rounded-lg shadow hover:bg-secondary transition cursor-pointer"
           >
             Recommencez une estimation
           </button>
@@ -307,7 +307,7 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
                   current.options?.map((opt) => (
                     <label key={opt.value} className="flex items-center gap-2 cursor-pointer">
                       <input
-                        className='calculator__checkbox checked:bg-primary checked:text-tertiary'
+                        className='calculator__checkbox checked:bg-primary checked:text-tertiary cursor-pointer'
                         type="checkbox"
                         value={opt.value}
                         checked={(answers[step] as string[] || []).includes(opt.value)}
@@ -323,23 +323,30 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
                     </label>
                   ))
                 ) : current.type === 'range' ? (
-                  <input
-                    type="range"
-                    min={current.min}
-                    max={current.max}
-                    step={current.step || 1}
-                    value={answers[step] !== undefined ? Number(answers[step]) : current.min}
-                    onChange={(e) => {
-                      const numericValue = Number(e.target.value);
-                      setAnswers((prev) => ({ ...prev, [step]: numericValue }));
-                    }}
-                    className="w-full"
-                  />
+                  <div className="relative w-full">
+                    <input
+                      type="range"
+                      min={current.min}
+                      max={current.max}
+                      step={current.step || 1}
+                      value={answers[step] !== undefined ? Number(answers[step]) : current.min}
+                      onChange={(e) => {
+                        const numericValue = Number(e.target.value);
+                        setAnswers((prev) => ({ ...prev, [step]: numericValue }));
+                      }}
+                      className="w-full accent-orange-500 range-slider"
+                    />
+                    <div className="text-sm text-orange-600 font-semibold mt-2 text-center">
+                      {answers[step] === current.max
+                        ? `${answers[step]}+ pages`
+                        : `${answers[step] ?? current.min} ${answers[step] === 1 ? 'page' : 'pages'}`}
+                    </div>
+                  </div>
                 ) : (
                   current.options?.map((opt) => (
                     <button
                       key={opt.value}
-                      className="px-4 py-2 rounded-lg bg-secondary font-semibold text-primary hover:bg-primary hover:text-tertiary transition"
+                      className="px-4 py-2 rounded-lg bg-secondary font-semibold text-primary hover:bg-primary hover:text-tertiary transition cursor-pointer"
                       onClick={() => handleAnswer(opt.value)}
                     >
                       {opt.label}
@@ -349,7 +356,7 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
 
                 {(current.type === 'multi-select' || current.type === 'range') && (
                   <button
-                    className="whitespace-nowrap px-6 py-3 bg-secondary text-tertiary font-semibold rounded-lg hover:bg-primary transition"
+                    className="whitespace-nowrap px-6 py-3 bg-secondary text-tertiary font-semibold rounded-lg hover:bg-primary transition cursor-pointer"
                     onClick={() => handleAnswer(answers[step] || [])}
                   >
                     Continuer
