@@ -64,29 +64,34 @@ const ContactModal: React.FC<ContactModalProps> = ({ onClose }) => {
     }
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}`, {
+      const apiUrl = process.env.NODE_ENV === 'development'
+        ? '/api/contact'
+        : (process.env.NEXT_PUBLIC_BACK_URL || '/api/contact');
+
+      const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({ ...formData, token }),
       });
 
-      const data = await response.json();
-
-      if (response.ok) {
-        setResponseMsg(data.success || 'Message envoyé avec succès !');
-        recaptchaRef.current?.reset();
-        setFormData({ name: '', email: '', message: '' });
-        setTimeout(() => {
-          onClose()
-        }, 700);
-      } else {
-        setResponseMsg(data.error || 'Erreur inconnue.');
+      if (!response.ok) {
+        const errorData = await response.json();
+        throw new Error(errorData.error || 'Une erreur est survenue');
       }
+
+      const data = await response.json();
+      setResponseMsg(data.success || 'Message envoyé avec succès !');
+      recaptchaRef.current?.reset();
+      setFormData({ name: '', email: '', message: '' });
+      setTimeout(() => {
+        onClose()
+      }, 700);
     } catch (error) {
-      setResponseMsg('Une erreur est survenue.');
-      console.error(error);
+      console.error('Erreur lors de l\'envoi du formulaire:', error);
+      setResponseMsg(error instanceof Error ? error.message : 'Une erreur est survenue.');
     }
   };
 

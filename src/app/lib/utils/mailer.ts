@@ -8,13 +8,30 @@ interface MailParams {
 }
 
 export const sendEmail = async ({ name, email, message, answers }: MailParams) => {
-  const transporter = nodemailer.createTransport({
-    service: 'gmail',
-    auth: {
-      user: process.env.MAIL_USER,
-      pass: process.env.MAIL_PASS,
-    },
-  });
+  let transporter;
+
+  if (process.env.NODE_ENV === 'development') {
+    // En développement, utiliser Ethereal Email (service de test)
+    const testAccount = await nodemailer.createTestAccount();
+    transporter = nodemailer.createTransport({
+      host: 'smtp.ethereal.email',
+      port: 587,
+      secure: false,
+      auth: {
+        user: testAccount.user,
+        pass: testAccount.pass,
+      },
+    });
+  } else {
+    // En production, utiliser Gmail
+    transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.MAIL_USER,
+        pass: process.env.MAIL_PASS,
+      },
+    });
+  }
 
   let answersContent = '';
   if (answers) {
@@ -28,7 +45,7 @@ export const sendEmail = async ({ name, email, message, answers }: MailParams) =
 
   const mailOptions = {
     from: email,
-    to: process.env.MAIL_RECEIVER,
+    to: process.env.NODE_ENV === 'development' ? 'test@example.com' : process.env.MAIL_RECEIVER,
     subject: 'Nouveau message depuis ton portfolio',
     html: `
       <h1>Message reçu</h1>
@@ -39,5 +56,9 @@ export const sendEmail = async ({ name, email, message, answers }: MailParams) =
     `,
   };
 
-  await transporter.sendMail(mailOptions);
+  const info = await transporter.sendMail(mailOptions);
+
+  if (process.env.NODE_ENV === 'development') {
+    console.log('Preview URL: %s', nodemailer.getTestMessageUrl(info));
+  }
 };

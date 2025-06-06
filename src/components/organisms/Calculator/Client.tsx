@@ -134,7 +134,7 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
     }
 
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_BACK_URL}`, {
+      const response = await fetch(`${process.env.BACK_URL}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
