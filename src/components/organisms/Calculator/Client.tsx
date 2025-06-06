@@ -334,7 +334,8 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
                         const numericValue = Number(e.target.value);
                         setAnswers((prev) => ({ ...prev, [step]: numericValue }));
                       }}
-                      className="w-full accent-orange-500 range-slider"
+                      className="w-full range-slider"
+                      style={{background: `linear-gradient(to right, var(--tertiary_color) 0%, var(--tertiary_color) ${(answers[step] ? (Number(answers[step]) -1) : 0) / (current.max -1) * 100}%, var(--primary_color) ${((answers[step] ? (Number(answers[step]) -1) : 0) / (current.max -1) * 100)}%, var(--primary_color) 100%)` }}
                     />
                     <div className="text-sm text-orange-600 font-semibold mt-2 text-center">
                       {answers[step] === current.max

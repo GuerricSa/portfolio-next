@@ -4,6 +4,7 @@
 @import './style/layout.css';
 @import './style/typography.css';
 @import './style/buttons.css';
+@import './style/organisms/calculator.css';
 @import './style/organisms/skills.css';
 @import './style/organisms/offers.css';
 @import './style/organisms/works.css';
