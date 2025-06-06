@@ -3,6 +3,7 @@ import "./globals.css";
 import { ContactModalProvider } from '../context/ContactModalContext';
 import ClientNavbar from "../components/organisms/Navbar/Server";
 import Footer from "components/organisms/Footer/Server";
+import ScrollToHash from "components/molecules/ScrollToHash";
 
 export const metadata: Metadata = {
   title: "Création de site internet – Guerric SANT, développeur web freelance",
@@ -19,6 +20,7 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
+        <ScrollToHash />
         <ContactModalProvider>
           <ClientNavbar />
           {children}
