@@ -134,7 +134,11 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
     }
 
     try {
-      const response = await fetch(`${process.env.BACK_URL}`, {
+      const apiUrl = process.env.NODE_ENV === 'development'
+        ? '/api/contact'
+        : (process.env.NEXT_PUBLIC_BACK_URL || '/api/contact');
+
+      const response = await fetch(`${apiUrl}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
