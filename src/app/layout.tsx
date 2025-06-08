@@ -9,6 +9,15 @@ import PageTransitionWrapper from "components/molecules/PageTransitionWrapper";
 export const metadata: Metadata = {
   title: "Création de site internet – Guerric SANT, développeur web freelance",
   description: "Développeur web freelance à Chambéry, j'aide les entreprises à créer des sites internet performants et sur-mesure avec WordPress, HubSpot CMS et React. Spécialisé en création de sites vitrines, pages de vente et refontes. Disponible en télétravail dans toute la France.",
+  icons: {
+    icon: [
+      { url: '/favicon.ico' },
+      { url: '/icon.png', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', type: 'image/png' },
+    ],
+  },
 };
 
 export default function RootLayout({
