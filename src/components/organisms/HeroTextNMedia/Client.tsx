@@ -48,7 +48,7 @@ const HeroTextNMediaClient: React.FC<HeroTextNMediaProps> = ({ calendlyUrl, cale
     <section
       ref={sectionRef}
       id="main-content"
-      className="container mx-auto transition-transform duration-300 ease-out flex flex-col items-center lg:flex-row gap-14 py-10 lg:py-28"
+      className="container mx-auto transition-transform duration-300 ease-out flex flex-col items-center lg:flex-row gap-14 py-10 lg:py-28 overflow-hidden"
     >
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
         <div>
@@ -91,7 +91,7 @@ const HeroTextNMediaClient: React.FC<HeroTextNMediaProps> = ({ calendlyUrl, cale
           alt="Portrait de Guerric SANT"
           width={400}
           height={540}
-          className="w-[25rem] max-w-full"
+          className="w-[25rem] max-w-full z-0"
           rotation={rotation}
           priority
         />

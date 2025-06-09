@@ -96,15 +96,10 @@
   }
 }
 
-.button--animated-white {
+.container--animated-white {
   --bg: var(--tertiary_color);
   --border-angle: 0deg;
-  font-weight: 600;
-  padding: 0.75rem 1.5rem;
-  box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  border-radius: 0.5rem;
   border: 2px solid transparent;
-  cursor: pointer;
   animation: border-angle-rotate 30s infinite linear;
   transition: color 300ms cubic-bezier(0.4, 0, 0.2, 1), background 300ms cubic-bezier(0.4, 0, 0.2, 1);
   background: linear-gradient(#FFF, #FFF) padding-box,

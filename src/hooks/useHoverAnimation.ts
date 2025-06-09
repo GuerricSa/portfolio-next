@@ -7,7 +7,7 @@ interface UseHoverAnimationProps {
 
 export const useHoverAnimation = ({
   animationDuration = 1400,
-  animationClass = 'animate'
+  animationClass = 'animateTitle'
 }: UseHoverAnimationProps = {}) => {
   const handleMouseEnter = useCallback((e: React.MouseEvent<HTMLElement>) => {
     const element = e.currentTarget;

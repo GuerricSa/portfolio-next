@@ -160,7 +160,7 @@ const HowItWorksV2Client: React.FC<HowItWorksV2ClientProps> = ({ steps }) => {
                     <span className="text-primary font-bold text-2xl">{steps[activeIndex].number}</span>
                   </motion.div>
 
-                  <div className="w-full bg-white rounded-lg p-6 lg:p-10 shadow-lg flex-1 mb-2 overflow-y-auto max-h-[calc(100vh-(4rem+49px+1.5rem+8px+1.5rem+64px+2rem+1rem+40px+1rem+4rem))] min-h-[calc(100vh-(4rem+49px+1.5rem+8px+1.5rem+64px+2rem+1rem+40px+1rem+4rem))] button--animated-white">
+                  <div className="w-full bg-white rounded-lg p-6 lg:p-10 shadow-lg flex-1 mb-2 overflow-y-auto max-h-[calc(100vh-(4rem+49px+1.5rem+8px+1.5rem+64px+2rem+1rem+40px+1rem+4rem))] min-h-[calc(100vh-(4rem+49px+1.5rem+8px+1.5rem+64px+2rem+1rem+40px+1rem+4rem))] container--animated-white">
                     {steps[activeIndex].title && (
                       <h3 className="how-it-works__step-title">{steps[activeIndex].title}</h3>
                     )}
