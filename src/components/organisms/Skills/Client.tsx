@@ -4,6 +4,8 @@ import React, { useState, useRef, useEffect } from 'react';
 import Text from '../../atoms/Text';
 import SkillCircle from '../../molecules/SkillCircle';
 import SkillDescription from '../../molecules/SkillDescription';
+import { useHoverAnimation } from "../../../hooks/useHoverAnimation"
+
 
 interface Logo {
   src: string;
@@ -36,6 +38,7 @@ const SkillsClient: React.FC<SkillsClientProps> = ({
   const [containerHeight, setContainerHeight] = useState(0);
   const descriptionRefs = useRef<Record<string, HTMLDivElement | null>>({});
   const circleRef = useRef<HTMLDivElement>(null);
+  const handleMouseEnter = useHoverAnimation();
 
   useEffect(() => {
 
@@ -68,7 +71,7 @@ const SkillsClient: React.FC<SkillsClientProps> = ({
   return (
     <section className="bg-primary py-12 transition-all duration-500 ease-in-out" aria-labelledby="skills-title">
       <div className="container mx-auto">
-        <Text variant="h2" id="skills-title" className="text-secondary mb-8 lg:mb-12">
+        <Text variant="h2" id="skills-title" className="text-secondary mb-8 lg:mb-12" onMouseEnter={handleMouseEnter}>
           Mes compétences techniques
         </Text>
         <nav className="mb-6 lg:mb-8" aria-label="Filtres de projets">

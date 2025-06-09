@@ -1,24 +1,40 @@
 'use client'
 
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
 interface UseScrollAnimationProps {
   threshold?: number;
-  rootMargin?: string;
   animationClass?: string;
 }
 
 export const useScrollAnimation = ({
   threshold = 0.1,
-  rootMargin = '-50px',
   animationClass = 'animate'
 }: UseScrollAnimationProps = {}) => {
   const pathname = usePathname();
+  const [isTransitioning, setIsTransitioning] = useState(false);
 
   useEffect(() => {
+    // Marquer le début de la transition
+    setIsTransitioning(true);
+
+    // Attendre que la transition soit terminée
+    const transitionTimer = setTimeout(() => {
+      setIsTransitioning(false);
+    }, 500); // Durée de la transition de page
+
+    return () => {
+      clearTimeout(transitionTimer);
+    };
+  }, [pathname]);
+
+  useEffect(() => {
+    // Ne pas initialiser l'observer pendant la transition
+    if (isTransitioning) return;
+
     // Attendre que le DOM soit mis à jour
-    setTimeout(() => {
+    const initTimer = setTimeout(() => {
       const observer = new IntersectionObserver(
         (entries) => {
           entries.forEach((entry) => {
@@ -33,7 +49,7 @@ export const useScrollAnimation = ({
         },
         {
           threshold,
-          rootMargin,
+          rootMargin: '0px',
         }
       );
 
@@ -42,7 +58,7 @@ export const useScrollAnimation = ({
       sections.forEach(section => {
         // Ajouter la classe initiale si elle n'existe pas déjà
         if (!section.classList.contains('opacity-0')) {
-          section.classList.add('opacity-0', 'translate-y-10');
+          section.classList.add('opacity-0', 'translate-y-8');
         }
         observer.observe(section);
       });
@@ -52,5 +68,8 @@ export const useScrollAnimation = ({
       };
     }, 100); // Petit délai pour s'assurer que le DOM est mis à jour
 
-  }, [pathname, threshold, rootMargin, animationClass]); // Réinitialiser à chaque changement de page
+    return () => {
+      clearTimeout(initTimer);
+    };
+  }, [isTransitioning, threshold, animationClass]);
 };

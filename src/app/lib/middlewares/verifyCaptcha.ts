@@ -1,7 +1,6 @@
 export const verifyCaptcha = async (token: string): Promise<boolean> => {
   // En développement, on bypass la vérification
   if (process.env.NODE_ENV === 'development') {
-    console.log('Mode développement : bypass de la vérification reCAPTCHA');
     return true;
   }
 
@@ -30,9 +29,6 @@ export const verifyCaptcha = async (token: string): Promise<boolean> => {
   }
 
   try {
-    console.log('Tentative de vérification reCAPTCHA...');
-    console.log('Site Key:', siteKey.substring(0, 5) + '...');
-    console.log('Token:', token.substring(0, 10) + '...');
 
     const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
       method: 'POST',
@@ -41,7 +37,6 @@ export const verifyCaptcha = async (token: string): Promise<boolean> => {
     });
 
     const data = await response.json();
-    console.log('Réponse reCAPTCHA complète:', data);
 
     if (!data.success) {
       console.error('Erreurs reCAPTCHA:', data['error-codes']);

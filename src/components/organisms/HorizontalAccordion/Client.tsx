@@ -17,7 +17,6 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
   const handleMouseTitleEnter = useHoverAnimation();
 
   useEffect(() => {
-    console.log("UseEffect")
     const checkHoverSupport = () => {
       const isHoverSupported = window.matchMedia('(hover: hover) and (pointer: fine)').matches && window.innerWidth > 1024;
       setHoverSupported(isHoverSupported);

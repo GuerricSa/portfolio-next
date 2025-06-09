@@ -68,9 +68,6 @@ const ContactModal: React.FC<ContactModalProps> = ({ onClose }) => {
         ? '/api/contact'
         : (process.env.NEXT_PUBLIC_BACK_URL || '/api/contact');
 
-      console.log('Envoi de la requête à:', apiUrl);
-      console.log('Token reCAPTCHA:', token.substring(0, 10) + '...');
-
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {

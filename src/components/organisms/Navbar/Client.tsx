@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link'
-import { usePathname } from 'next/navigation';
+import { usePathname, useRouter } from 'next/navigation';
 import Logo from '../../atoms/Logo';
 import NavLink from '../../molecules/NavLink';
 import SocialLink from '../../molecules/SocialLink';
@@ -22,6 +22,13 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
   const [isOpen, setIsOpen] = useState(false);
   const { openModal } = useContactModal();
   const pathname = usePathname();
+  const router = useRouter();
+
+  // Fonction pour normaliser les chemins
+  const normalizePath = (path: string) => {
+    // Enlever le slash final s'il existe
+    return path.endsWith('/') ? path.slice(0, -1) : path;
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -31,6 +38,29 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
+
+  useEffect(() => {
+    const handleScrollToAnchor = () => {
+      const anchorId = sessionStorage.getItem('scrollToAnchor');
+      if (anchorId) {
+        // Attendre que la page soit complètement chargée
+        setTimeout(() => {
+          const element = document.getElementById(anchorId);
+          if (element) {
+            element.scrollIntoView({
+              behavior: 'smooth',
+              block: 'end'
+            });
+          }
+          // Nettoyer le sessionStorage
+          sessionStorage.removeItem('scrollToAnchor');
+        }, 1000);
+      }
+    };
+
+    // Exécuter le scroll après la navigation
+    handleScrollToAnchor();
+  }, [pathname]);
 
   const isActiveLink = (href: string) => {
     if (href === '/') {
@@ -72,12 +102,36 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
             const isActive = isActiveLink(item.href);
 
             if (isAnchorLink) {
+              const [pagePath, anchorId] = item.href.split('#');
+              const isCurrentPage = normalizePath(pathname) === normalizePath(pagePath);
+
               return (
                 <Link
                   key={item.href}
                   href={item.href}
-                  scroll={true}
-                  onClick={() => setIsOpen(false)}
+                  scroll={false}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    setIsOpen(false);
+
+                    if (!isCurrentPage) {
+                      // Si on n'est pas sur la bonne page, on navigue d'abord
+                      router.push(pagePath);
+                      // On stocke l'ID de l'ancre dans sessionStorage pour le récupérer après la navigation
+                      sessionStorage.setItem('scrollToAnchor', anchorId);
+                    } else {
+                      // Si on est déjà sur la bonne page, on attend la fin de l'animation
+                      setTimeout(() => {
+                        const element = document.getElementById(anchorId);
+                        if (element) {
+                          element.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                          });
+                        }
+                      }, 500);
+                    }
+                  }}
                   className={`block py-2 hover:text-tertiary cursor-pointer ${
                     isActive ? 'text-tertiary' : 'text-primary botToTopHover--desktop'
                   }`}

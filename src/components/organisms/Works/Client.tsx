@@ -4,6 +4,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import Text from '../../atoms/Text';
 import WorkCard from '../../atoms/WorkCard';
 import WorkModal from '../../molecules/WorkModal';
+import { useHoverAnimation } from "../../../hooks/useHoverAnimation"
 
 
 interface Work {
@@ -30,6 +31,7 @@ const WorksClient: React.FC<WorksClientProps> = ({ works }) => {
   const isProgrammaticScroll = useRef(false);
   const cardRef = useRef<HTMLLIElement>(null);
   const sliderRef = useRef<HTMLUListElement>(null);
+  const handleMouseEnter = useHoverAnimation();
 
   // Gestion du slider auto
   const handleUserInteraction = () => {
@@ -146,7 +148,7 @@ const WorksClient: React.FC<WorksClientProps> = ({ works }) => {
     <>
       <section className="py-20 bg-primary" aria-labelledby="works-title" id='works'>
         <div className="container">
-          <Text variant="h2" id="works-title" className="text-center mb-12 text-secondary">
+          <Text variant="h2" id="works-title" className="text-center mb-12 text-secondary" onMouseEnter={handleMouseEnter}>
             Mes réalisations
           </Text>
 
