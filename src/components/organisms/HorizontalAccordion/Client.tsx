@@ -4,6 +4,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { HorizontalAccordionProps } from './types';
+import { useHoverAnimation } from '../../../hooks/useHoverAnimation';
 
 const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtitle, cards }) => {
   const [hoverSupported, setHoverSupported] = useState(false);
@@ -13,6 +14,7 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
   const sectionRef = useRef<HTMLElement>(null);
   const cardsRef = useRef<HTMLDivElement>(null);
   const hoverTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const handleMouseTitleEnter = useHoverAnimation();
 
   useEffect(() => {
     console.log("UseEffect")
@@ -91,7 +93,7 @@ const HorizontalAccordion: React.FC<HorizontalAccordionProps> = ({ title, subtit
   return (
     <section ref={sectionRef} className="py-16 px-4 md:px-8 container">
       <div className="mx-auto">
-        <h2 className="text-center mb-12">{title}</h2>
+        <h2 onMouseEnter={handleMouseTitleEnter} className="text-center mb-12">{title}</h2>
         <p className="text-center text-lg md:text-xl mb-12">{subtitle}</p>
       </div>
 

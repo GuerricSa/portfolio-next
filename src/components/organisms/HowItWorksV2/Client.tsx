@@ -2,6 +2,7 @@
 
 import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence, useSpring, useMotionValue, useTransform } from 'framer-motion';
+import { useHoverAnimation } from '../../../hooks/useHoverAnimation';
 
 interface Step {
   number: number;
@@ -23,6 +24,7 @@ const HowItWorksV2Client: React.FC<HowItWorksV2ClientProps> = ({ steps }) => {
   const touchEndX = useRef<number | null>(null);
   const activeIndexMotion = useMotionValue(activeIndex);
   const totalDash = 1200;
+  const handleMouseEnter = useHoverAnimation();
 
   const progress = useTransform(activeIndexMotion, [0, steps.length - 1], [0, 1]);
 
@@ -112,7 +114,7 @@ const HowItWorksV2Client: React.FC<HowItWorksV2ClientProps> = ({ steps }) => {
 
   return (
     <section ref={sectionRef} className="relative w-full h-screen overflow-hidden flex flex-col">
-      <h2 className="container text-3xl md:text-4xl font-bold text-primary text-center mb-12">
+      <h2 onMouseEnter={handleMouseEnter} className="container text-3xl md:text-4xl font-bold text-primary text-center mb-12">
         Notre collaboration
       </h2>
 
@@ -158,7 +160,7 @@ const HowItWorksV2Client: React.FC<HowItWorksV2ClientProps> = ({ steps }) => {
                     <span className="text-primary font-bold text-2xl">{steps[activeIndex].number}</span>
                   </motion.div>
 
-                  <div className="w-full bg-white rounded-lg p-6 lg:p-10 shadow-lg flex-1 mb-2 overflow-y-auto max-h-[calc(100vh-(4rem+49px+1.5rem+8px+1.5rem+64px+2rem+1rem+40px+1rem+4rem))] min-h-[calc(100vh-(4rem+49px+1.5rem+8px+1.5rem+64px+2rem+1rem+40px+1rem+4rem))]">
+                  <div className="w-full bg-white rounded-lg p-6 lg:p-10 shadow-lg flex-1 mb-2 overflow-y-auto max-h-[calc(100vh-(4rem+49px+1.5rem+8px+1.5rem+64px+2rem+1rem+40px+1rem+4rem))] min-h-[calc(100vh-(4rem+49px+1.5rem+8px+1.5rem+64px+2rem+1rem+40px+1rem+4rem))] button--animated-white">
                     {steps[activeIndex].title && (
                       <h3 className="how-it-works__step-title">{steps[activeIndex].title}</h3>
                     )}

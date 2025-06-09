@@ -3,7 +3,7 @@ import Client from './Client';
 import { HorizontalAccordionProps } from './types';
 
 const mockData: HorizontalAccordionProps = {
-  title: "Découvrez nos services",
+  title: "Découvrez mes services",
   subtitle: "Des solutions adaptées à vos besoins",
   cards: [
     {

@@ -5,6 +5,7 @@ import ContactButton from '../../atoms/ContactButton';
 import CalendlyButton from '../../atoms/CalendlyButton/Server';
 import Text from '../../atoms/Text';
 import { useContactModal } from '../../../context/ContactModalContext';
+import { useHoverAnimation } from '../../../hooks/useHoverAnimation';
 
 interface ContactBannerClientProps {
   title: string;
@@ -12,6 +13,7 @@ interface ContactBannerClientProps {
 }
 
 const ContactBannerClient: React.FC<ContactBannerClientProps> = ({title, description}) => {
+  const handleMouseEnter = useHoverAnimation();
   const { openModal } = useContactModal();
 
   return (
@@ -22,7 +24,7 @@ const ContactBannerClient: React.FC<ContactBannerClientProps> = ({title, descrip
     >
       <div className="container mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
         <div>
-          <Text variant="h2" id="contact-title" className="mb-2">
+          <Text variant="h2" onMouseEnter={handleMouseEnter} id="contact-title" className="mb-2">
             {title}
           </Text>
           <Text variant="body" className="text-primary">

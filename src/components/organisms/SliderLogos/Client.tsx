@@ -4,6 +4,7 @@ import React from 'react';
 import useGlide from '../../molecules/UseGlide';
 import Image from '../../atoms/Image';
 import Text from '../../atoms/Text';
+import { useHoverAnimation } from '../../../hooks/useHoverAnimation';
 
 interface SliderLogosClientProps {
   clients: Array<{
@@ -17,6 +18,7 @@ interface SliderLogosClientProps {
 
 const SliderLogosClient: React.FC<SliderLogosClientProps> = ({ clients, title }) =>  {
   const shouldInitGlide = clients.length > 5;
+  const handleMouseEnter = useHoverAnimation();
 
   useGlide('.glide', {
     type: 'carousel',
@@ -39,7 +41,7 @@ const SliderLogosClient: React.FC<SliderLogosClientProps> = ({ clients, title })
     <section className="container">
       <div className='relative'>
         {title && (
-            <Text className="text-center" variant="h2">{title}</Text>
+            <Text onMouseEnter={handleMouseEnter} className="text-center" variant="h2">{title}</Text>
         )}
 
           <div className="glide relative flex h-full left-0 top-0 w-full py-16">

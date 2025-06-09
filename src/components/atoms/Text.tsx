@@ -6,6 +6,8 @@ interface TextProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   variant?: 'h1' | 'h2' | 'h3' | 'body' | 'small';
   unstyled?: boolean;
+  onMouseEnter?: (event: React.MouseEvent<HTMLElement>) => void;
+
 }
 
 const Text: React.FC<TextProps> = ({
@@ -13,6 +15,7 @@ const Text: React.FC<TextProps> = ({
   variant = 'body',
   className = '',
   unstyled = false,
+  onMouseEnter,
   ...props
 }) => {
   const baseStyle = '';
@@ -38,7 +41,7 @@ const Text: React.FC<TextProps> = ({
   const Component = variant.startsWith('h') ? variant : 'p';
 
   return (
-    <Component className={`${baseStyle} ${textStyle} ${className}`} {...props}>
+    <Component className={`${baseStyle} ${textStyle} ${className}`} {...props} onMouseEnter={onMouseEnter}>
       {children}
     </Component>
   );
