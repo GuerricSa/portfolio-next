@@ -35,6 +35,9 @@ export const metadata: Metadata = {
       },
     ],
   },
+  other: {
+    'google-site-verification': 'your-verification-code', // Remplacez par votre code de vérification Google Search Console
+  },
 };
 
 export default function RootLayout({

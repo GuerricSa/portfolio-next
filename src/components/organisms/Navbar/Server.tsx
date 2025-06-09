@@ -5,7 +5,7 @@ const navItems = [
   { label: 'Accueil', href: '/' },
   { label: 'À propos', href: '/about' },
   { label: 'Mes réalisations', href: '/about/#works' },
-  { label: 'simulateur', href: '/estimate'}
+  { label: 'Estimation', href: '/estimate'}
 ];
 
 const NavigationClient: React.FC = () => {
