@@ -2,7 +2,7 @@
 
 import React, { forwardRef } from 'react';
 import Image from 'next/image';
-import Text from './Text';
+import Text from '../atoms/Text';
 
 interface WorkCardProps {
   work: {

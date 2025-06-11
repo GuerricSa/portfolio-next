@@ -2,10 +2,9 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import Text from '../../atoms/Text';
-import WorkCard from '../../atoms/WorkCard';
+import WorkCard from '../../molecules/WorkCard';
 import WorkModal from '../../molecules/WorkModal';
 import { useHoverAnimation } from "../../../hooks/useHoverAnimation"
-
 
 interface Work {
   id: number;
@@ -15,7 +14,10 @@ interface Work {
   image: string;
   link: string;
   client: string;
-  technologies: string[];
+  technologies?: string[];
+  context?: string;
+  keyAchievements?: string[];
+  skills?: string[];
 }
 
 interface WorksClientProps {
@@ -96,6 +98,18 @@ const WorksClient: React.FC<WorksClientProps> = ({ works }) => {
     setSelectedWork(null);
     document.body.style.overflow = '';
   };
+
+  // Gestion de la touche Échap
+  useEffect(() => {
+    const handleEscapeKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && selectedWork) {
+        closeModal();
+      }
+    };
+
+    window.addEventListener('keydown', handleEscapeKey);
+    return () => window.removeEventListener('keydown', handleEscapeKey);
+  }, [selectedWork]);
 
   const handlePrevSlide = () => {
     if (cardRef.current && sliderRef.current) {

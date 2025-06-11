@@ -12,6 +12,7 @@ export const useHoverAnimation = ({
   const handleMouseEnter = useCallback((e: React.MouseEvent<HTMLElement>) => {
     const element = e.currentTarget;
     const hasSpans = element.querySelectorAll('span').length > 0;
+    console.log(hasSpans)
 
     if (hasSpans) {
       // Animation CSS pour les éléments avec des spans

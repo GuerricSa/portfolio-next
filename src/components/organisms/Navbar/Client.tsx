@@ -175,7 +175,7 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
           {/* Navigation contact mobile */}
           <nav className="px-6 py-4 justify-end flex lg:hidden">
             <button
-              className='block py-2 px-4 group text-primary lg:text-secondary'
+              className='block py-2 px-4 group text-primary lg:text-secondary cursor-pointer'
               onClick={openModal}
             >
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -198,7 +198,7 @@ const Navbar: React.FC<NavbarProps> = ({ items }) => {
         {/* Navigation contact desktop */}
         <nav className="py-4 justify-end hidden lg:flex">
           <button
-            className='block py-2 px-4 group text-primary lg:text-secondary'
+            className='block py-2 px-4 group text-primary lg:text-secondary cursor-pointer'
             onClick={openModal}
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
