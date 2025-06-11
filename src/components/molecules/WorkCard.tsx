@@ -10,7 +10,10 @@ interface WorkCardProps {
     title: string;
     subtitle?: string;
     image: string;
-    technologies: string[];
+    technologies?: string[];
+    context?: string;
+    keyAchievements?: string[];
+    skills?: string[];
   };
   heightClass?: string;
   isMobile?: boolean;
@@ -61,7 +64,7 @@ const WorkCard = forwardRef<HTMLLIElement, WorkCardProps>(({
           </Text>
         )}
         <div className="flex gap-2 flex-wrap">
-          {work.technologies.map((tech, i) => (
+          {work.technologies && work.technologies.map((tech, i) => (
             <span
               key={i}
               className="px-2 py-1 bg-primary text-secondary rounded-full text-xs"
