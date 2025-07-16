@@ -124,6 +124,8 @@ const flow: Flow = {
       { label: 'Connexions à des outils tiers', value: 'api', next: 'Q10' },
       { label: 'Animations spéciales', value: 'animations', next: 'Q10' },
       { label: 'Site multilingue', value: 'multilingue', next: 'Q10' },
+      { label: 'Autre', value: 'autre', next: 'Q10' },
+      { label: 'Aucun', value: 'none', next: 'Q10' },
     ],
   },
   Q10: {

@@ -5,9 +5,10 @@ interface MailParams {
   email: string;
   message: string;
   answers?: Record<string, string | string[]>;
+  description?: string;
 }
 
-export const sendEmail = async ({ name, email, message, answers }: MailParams) => {
+export const sendEmail = async ({ name, email, message, answers, description }: MailParams) => {
   let transporter;
 
   if (process.env.NODE_ENV === 'development') {
@@ -53,6 +54,7 @@ export const sendEmail = async ({ name, email, message, answers }: MailParams) =
       <p><strong>Email:</strong> ${email}</p>
       <p><strong>Message:</strong> ${message}</p>
       ${answersContent ? `<h2>Réponses à la calculatrice :</h2>${answersContent}` : ''}
+      ${description ? `<h2>Description :</h2>${description}` : ''}
     `,
   };
 

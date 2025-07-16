@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useRef, FormEvent, ChangeEvent } from 'react';
+import { useState, useRef, FormEvent, ChangeEvent, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { PopupButton } from "react-calendly";
@@ -95,7 +95,7 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
     const hasMockup = answers['Q7'] === "oui" ? "avec des maquettes" : "sans maquettes";
     const siteType = flow['Q8']?.options?.find(opt => opt.value === answers['Q8'])?.label;
 
-    const specs = Array.isArray(answers['Q9'])
+    const specs = Array.isArray(answers['Q9']) && !answers['Q9'].includes('none')
       ? `et avec ${answers['Q9'].length > 1 ? 'les options' : 'l\'option'} : <ul>${answers['Q9'].map(answer => {
           const option = flow['Q9']?.options?.find(opt => opt.value === answer);
           return `<li class="list-disc list-inside py-4 font-semibold">${option?.label || ''}</li>`;
@@ -103,25 +103,28 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
       : null;
 
     // Calcul du tarif estimé
-    let basePrice = 600;
+    let basePrice = 700;
     if (nbPages > 3) basePrice = 400;
+    if (hasMockup === "avec des maquettes") basePrice = basePrice + 300;
+
 
     let total = basePrice * nbPages;
-    if (hasMockup === "avec des maquettes") total += 300;
-
-    if (siteType === 'Un site marchand') total += 1000;
+    if (siteType === 'Un site marchand') total += 1500;
 
     // Vérification des spécificités
     const specsArray = Array.isArray(answers['Q9']) ? answers['Q9'] : [];
     if (specsArray.includes('blog')) total += 800;
     if (specsArray.includes('api')) total += 800;
     if (specsArray.includes('multilingue')) total += 800;
+    if (specsArray.includes('animations')) total += 800;
 
     const newText = `D'après les estimations, pour ${siteType?.toLowerCase() || ''} de ${nbPages} pages, ${hasMockup} ${specs || ""}il faut compter : <span class="block text-tertiary text-4xl font-bold">${total}€</span>
     Bien sûr, ceci n'est qu'une estimation. Si vous souhaitez approfondir le sujet, prenez un rendez-vous sur mon Calendly ou me contacter directement par message, je serai ravi d'en discuter.`;
 
     return newText;
   };
+
+  const description = useMemo(() => replacePlaceholders(), [answers]);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -143,7 +146,7 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ ...formData, answers, token }),
+        body: JSON.stringify({ ...formData, answers, description, token }),
       });
 
       const data = await response.json();
@@ -196,14 +199,13 @@ const CalculatorClient: React.FC<CalculatorClientProps> = ({ flow }) => {
 
     // Affichage final du résultat
     if (el.key === 'E5') {
-      const dynamicText = replacePlaceholders();
 
       return (
         <div className="text-center">
           <h2 className="text-xl font-bold mb-4">{el.title}</h2>
           <div
             className="mb-4 whitespace-pre-line calculator__answer-container"
-            dangerouslySetInnerHTML={{ __html: dynamicText }}
+            dangerouslySetInnerHTML={{ __html: description }}
           ></div>
           <div className="flex gap-4 flex-wrap items-center justify-center mt-4 md:mt-0 flex-row md:flex-col lg:flex-nowrap lg:flex-row">
             <button
