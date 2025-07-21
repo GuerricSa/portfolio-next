@@ -6,6 +6,7 @@ import Footer from "components/organisms/Footer/Server";
 import ScrollToHash from "components/molecules/ScrollToHash";
 import ScrollAnimation from "components/molecules/ScrollAnimation";
 import PageTransitionWrapper from "components/molecules/PageTransitionWrapper"
+import { GoogleTagManager } from '@next/third-parties/google'
 
 export const metadata: Metadata = {
   title: "Création de site internet – Guerric SANT, développeur web freelance",
@@ -61,6 +62,7 @@ export default function RootLayout({
           <Footer />
         </ContactModalProvider>
       </body>
+      <GoogleTagManager gtmId="GTM-P2FCSLBR" />
     </html>
   );
 }
