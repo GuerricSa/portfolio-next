@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Script from "next/script";
 import "./globals.css";
 import { ContactModalProvider } from 'context/ContactModalContext';
 import ClientNavbar from "components/organisms/Navbar/Server";
@@ -52,6 +53,24 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
+        <Script id="axeptio-config" strategy="beforeInteractive">
+          {`
+            window.axeptioSettings = {
+              clientId: "687dfe4d02291e882b490289",
+              cookiesVersion: "portfolio-fr-EU",
+              googleConsentMode: {
+                default: {
+                  analytics_storage: "denied",
+                  ad_storage: "denied",
+                  ad_user_data: "denied",
+                  ad_personalization: "denied",
+                  wait_for_update: 500
+                }
+              }
+            };
+          `}
+        </Script>
+        <Script id="axeptio-sdk" src="//static.axept.io/sdk.js" strategy="beforeInteractive" async />
         <ScrollAnimation />
         <ScrollToHash />
         <ContactModalProvider>
