@@ -60,10 +60,10 @@ export default function RootLayout({
               cookiesVersion: "portfolio-fr-EU",
               googleConsentMode: {
                 default: {
-                  analytics_storage: "denied",
-                  ad_storage: "denied",
-                  ad_user_data: "denied",
-                  ad_personalization: "denied",
+                  analytics_storage: "granted",
+                  ad_storage: "granted",
+                  ad_user_data: "granted",
+                  ad_personalization: "granted",
                   wait_for_update: 500
                 }
               }
