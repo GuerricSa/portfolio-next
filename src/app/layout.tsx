@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import Script from "next/script";
+//import Script from "next/script";
 import "./globals.css";
 import { ContactModalProvider } from 'context/ContactModalContext';
 import ClientNavbar from "components/organisms/Navbar/Server";
@@ -53,7 +53,7 @@ export default function RootLayout({
       <body
         className={`antialiased`}
       >
-        <Script id="axeptio-config" strategy="beforeInteractive">
+        {/* <Script id="axeptio-config" strategy="beforeInteractive">
           {`
             window.axeptioSettings = {
               clientId: "687dfe4d02291e882b490289",
@@ -70,7 +70,7 @@ export default function RootLayout({
             };
           `}
         </Script>
-        <Script id="axeptio-sdk" src="//static.axept.io/sdk.js" strategy="beforeInteractive" async />
+        <Script id="axeptio-sdk" src="//static.axept.io/sdk.js" strategy="beforeInteractive" async /> */}
         <ScrollAnimation />
         <ScrollToHash />
         <ContactModalProvider>
